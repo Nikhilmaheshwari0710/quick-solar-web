@@ -14,13 +14,12 @@ export default function SolarPackages({ onOpenQuote }) {
       tagline: 'Australia’s #1 Choice for 2–4 Bedroom Homes',
       dailyRate: '$3.00',
       weeklyRate: '$21',
-      featured: true,
-      ribbon: 'Most Popular',
+      featured: false,
       kw: '6.6 kW',
       panels: '15 x 440W N-Type Tier 1',
       inverter: '5kW Smart WiFi Inverter',
-      generation: 'Up to 26.4 kWh / day',
-      savings: 'Save up to $1,650 / yr',
+      generation: '26.4 kWh / day',
+      savings: 'Save $1,650 / yr',
       rebate: '$2,450 Federal STC Off',
       warranty: '25-Yr Tier 1 Performance',
       specs: [
@@ -36,12 +35,13 @@ export default function SolarPackages({ onOpenQuote }) {
       tagline: 'Engineered for Ducted AC, Pools & EV Owners',
       dailyRate: '$4.80',
       weeklyRate: '$34',
-      featured: false,
+      featured: true,
+      ribbon: '#1 MOST POPULAR',
       kw: '10.5 kW',
       panels: '24 x 440W N-Type Tier 1',
       inverter: '8.5kW Dual MPPT Inverter',
-      generation: 'Up to 42.0 kWh / day',
-      savings: 'Save up to $2,340 / yr',
+      generation: '42.0 kWh / day',
+      savings: 'Save $2,340 / yr',
       rebate: '$3,480 Federal STC Off',
       warranty: '25-Yr Tier 1 Performance',
       specs: [
@@ -61,8 +61,8 @@ export default function SolarPackages({ onOpenQuote }) {
       kw: '13.2 kW',
       panels: '30 x 440W N-Type Tier 1',
       inverter: '10kW 3-Phase Inverter',
-      generation: 'Up to 52.8 kWh / day',
-      savings: 'Save up to $3,100 / yr',
+      generation: '52.8 kWh / day',
+      savings: 'Save $3,100 / yr',
       rebate: '$4,250 Federal STC Off',
       warranty: '25-Yr Tier 1 Performance',
       specs: [
@@ -148,8 +148,7 @@ export default function SolarPackages({ onOpenQuote }) {
       tagline: 'Whole-Home Instant Blackout Backup',
       dailyRate: '$6.50',
       weeklyRate: '$45',
-      featured: true,
-      ribbon: 'Tesla Certified',
+      featured: false,
       kw: '13.5 kWh',
       panels: 'Integrated Hybrid',
       inverter: 'Built-in 20kW Inverter',
@@ -170,7 +169,8 @@ export default function SolarPackages({ onOpenQuote }) {
       tagline: 'Modular High-Voltage Safe LFP Storage',
       dailyRate: '$4.90',
       weeklyRate: '$34',
-      featured: false,
+      featured: true,
+      ribbon: '#1 MOST POPULAR',
       kw: '9.6–19.2 kWh',
       panels: 'Modular Stackable',
       inverter: 'Sungrow Hybrid Compatible',
@@ -275,7 +275,7 @@ export default function SolarPackages({ onOpenQuote }) {
 
               {/* Card Header & Tier */}
               <div className="pkg-header">
-                <div className="pkg-capacity-pill">{pkg.kw}</div>
+                <div className="pkg-capacity-pill">{pkg.kw} SYSTEM</div>
                 <h3 className="pkg-title">{pkg.name}</h3>
                 <p className="pkg-tagline">{pkg.tagline}</p>
               </div>
@@ -287,22 +287,26 @@ export default function SolarPackages({ onOpenQuote }) {
                   {pkg.dailyRate !== 'Custom' && <span className="pkg-price-unit">/ day</span>}
                 </div>
                 {pkg.weeklyRate !== 'Tailored' ? (
-                  <div className="pkg-finance-text">
-                    ${pkg.weeklyRate.replace('$', '')} / wk on Brighte $0 Deposit
+                  <div className="pkg-finance-badge">
+                    <Zap size={12} />
+                    <span>${pkg.weeklyRate.replace('$', '')}/wk on Brighte $0 Deposit</span>
                   </div>
                 ) : (
-                  <div className="pkg-finance-text">Custom PPA & Capital Finance</div>
+                  <div className="pkg-finance-badge">
+                    <Zap size={12} />
+                    <span>Custom PPA & Capital Finance</span>
+                  </div>
                 )}
               </div>
 
               {/* Key Specs Summary Bar */}
               <div className="pkg-key-metrics-grid">
-                <div className="pkg-metric-item">
-                  <Sun size={15} className="text-emerald" />
+                <div className="pkg-metric-item metric-gen">
+                  <Sun size={15} />
                   <span>{pkg.generation}</span>
                 </div>
-                <div className="pkg-metric-item">
-                  <DollarSign size={15} className="icon-gold" />
+                <div className="pkg-metric-item metric-sav">
+                  <DollarSign size={15} />
                   <span>{pkg.savings}</span>
                 </div>
               </div>
@@ -312,7 +316,7 @@ export default function SolarPackages({ onOpenQuote }) {
                 {pkg.specs.map((spec, idx) => (
                   <li key={idx} className="pkg-spec-row">
                     <div className="pkg-check-icon">
-                      <Check size={13} strokeWidth={3} />
+                      <Check size={12} strokeWidth={3.2} />
                     </div>
                     <span>{spec}</span>
                   </li>
@@ -323,7 +327,7 @@ export default function SolarPackages({ onOpenQuote }) {
               <div className="pkg-action-wrap">
                 <button
                   type="button"
-                  className={`btn ${pkg.featured ? 'btn-hero-emerald' : 'btn-outline'} btn-md`}
+                  className={`btn ${pkg.featured ? 'btn-hero-emerald' : 'btn-pkg-dark'} btn-md`}
                   style={{ width: '100%', justifyContent: 'center' }}
                   onClick={() => onOpenQuote({ package: pkg.name, rate: pkg.dailyRate })}
                 >

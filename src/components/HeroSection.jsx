@@ -7,13 +7,27 @@ import {
 export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
   return (
     <section className="hero-reference-section" id="top">
+      {/* Background Video */}
+      <video
+        className="hero-bg-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/images/hero/Modern_home_with_solar_panels_202609071724.mp4" type="video/mp4" />
+      </video>
+
+      {/* Video Dark Gradient Overlay for Maximum Text Contrast */}
+      <div className="hero-video-overlay" />
+
       {/* Ambient Animated Solar Energy Glow Orbs */}
       <div className="hero-ambient-orb hero-orb-emerald" />
       <div className="hero-ambient-orb hero-orb-gold" />
 
-      <div className="container-wide" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="hero-reference-grid">
-          {/* Left Column: Accreditation, Headline, Subhead, 4 Trust Badges, Dual CTAs */}
+      <div className="hero-video-content-wrapper">
+        <div className="hero-left-focused-layout">
+          {/* Left Column Content directly over Video */}
           <div className="hero-reference-content">
             {/* Top Green Accreditation Pill */}
             <div className="hero-accreditation-pill hero-anim-fade-in">
@@ -36,7 +50,7 @@ export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
               High-efficiency Tier 1 solar systems with $0 upfront finance, 25-year warranty and our 30-Day Price Beat Guarantee.
             </p>
 
-            {/* 4 Circular Trust Badges matching exact image */}
+            {/* 4 Circular Trust Badges */}
             <div className="hero-trust-badges-grid hero-anim-slide-up-3">
               <div className="hero-badge-pill">
                 <div className="badge-circle-icon">
@@ -93,51 +107,31 @@ export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
                 <ArrowRight size={18} />
               </button>
             </div>
-          </div>
 
-          {/* Right Column: Floating Savings Card with Floating Float Animation */}
-          <div className="hero-reference-visual">
-            <div className="hero-floating-savings-card hero-card-animated-float">
-              {/* Live Pulsing Dot */}
-              <div className="hero-live-pill">
-                <span className="live-pulsing-circle" />
-                <span>Live Solar Yield</span>
+            {/* Left-Aligned Premium Glass Location & Google Review Box */}
+            <div className="hero-bottom-proof-box hero-anim-fade-in-delayed">
+              {/* Row 1: Serving Locations */}
+              <div className="proof-box-row proof-box-location">
+                <div className="proof-icon-circle">
+                  <MapPin size={14} />
+                </div>
+                <span>Proudly serving Brisbane, Gold Coast, Sunshine Coast, Ipswich & QLD</span>
               </div>
 
-              <div className="hero-savings-inner-wrap">
-                <div className="savings-badge-icon">
-                  <DollarSign size={22} />
+              {/* Row 2: Rating & Google Reviews */}
+              <div className="proof-box-row proof-box-rating">
+                <div className="proof-stars-wrap">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={13} fill="#fbbf24" color="#fbbf24" />
+                  ))}
                 </div>
-                <div>
-                  <div className="savings-badge-upto">Up to</div>
-                  <div className="savings-badge-amount">$2,210</div>
-                  <div className="savings-badge-title">Estimated Avg Annual Savings*</div>
-                  <div className="savings-badge-caption">*Based on typical 6.6kW system in QLD</div>
+                <span className="proof-score">4.9/5</span>
+                <span className="proof-bullet">•</span>
+                <div className="proof-google-wrap">
+                  <span className="google-g-icon">G</span>
+                  <span>From 1,200+ Google Reviews</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Dark Bottom Hero Banner Strip (Exact Match to Image) */}
-        <div className="hero-dark-footer-strip hero-anim-fade-in-delayed">
-          <div className="hero-strip-location">
-            <div className="hero-strip-pin">
-              <MapPin size={16} />
-            </div>
-            <span>Proudly serving Brisbane, Gold Coast, Sunshine Coast, Ipswich, Toowoomba & all of Queensland.</span>
-          </div>
-
-          <div className="hero-strip-rating">
-            <div className="hero-strip-stars">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={15} fill="#f59e0b" color="#f59e0b" />
-              ))}
-            </div>
-            <span className="hero-strip-score">4.9/5</span>
-            <div className="hero-strip-google">
-              <span className="google-g-icon">G</span>
-              <span>From 1,200+ reviews</span>
             </div>
           </div>
         </div>

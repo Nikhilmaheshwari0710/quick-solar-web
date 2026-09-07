@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ArrowRight, TrendingDown, DollarSign, Award, CheckCircle2, Zap } from 'lucide-react';
+import { MapPin, ArrowRight, Eye, Award, CheckCircle2, Zap } from 'lucide-react';
 import { REAL_PROJECTS } from '../data/siteData';
 
 export default function RealCustomerProjects({ onOpenQuote }) {
@@ -10,8 +10,8 @@ export default function RealCustomerProjects({ onOpenQuote }) {
   return (
     <section className="section real-projects-compact-section" id="projects-preview">
       <div className="container-wide">
-        {/* Compact Header */}
-        <div className="section-header" style={{ marginBottom: '2rem' }}>
+        {/* Section Header */}
+        <div className="section-header" style={{ marginBottom: '2.5rem' }}>
           <div className="pill-badge pill-badge-emerald" style={{ marginBottom: '0.65rem' }}>
             <Award size={14} />
             <span>PROVEN REAL-WORLD RESULTS</span>
@@ -24,14 +24,23 @@ export default function RealCustomerProjects({ onOpenQuote }) {
           </p>
         </div>
 
-        {/* Compact 3-Column Grid */}
+        {/* 3-Column Enhanced Grid */}
         <div className="projects-compact-grid">
           {featuredProjects.map((proj) => (
             <div key={proj.id} className="project-compact-card">
-              {/* Image with Overlaid Badges */}
+              {/* Image with Overlaid Badges & Interactive Zoom Hint */}
               <div className="proj-compact-img-wrap">
                 <img src={proj.image} alt={proj.title} className="proj-compact-img" />
                 <div className="proj-img-overlay" />
+                
+                {/* Hover Animation Overlay Hint */}
+                <Link to={`/projects/${proj.id}`} className="proj-zoom-hint" title="View Full Installation Details">
+                  <span className="zoom-hint-btn">
+                    <Eye size={14} />
+                    <span>View Full Case Study</span>
+                  </span>
+                </Link>
+
                 <span className="proj-loc-pill">
                   <MapPin size={12} />
                   <span>{proj.location}</span>
@@ -42,15 +51,15 @@ export default function RealCustomerProjects({ onOpenQuote }) {
                 </span>
               </div>
 
-              {/* Compact Body */}
+              {/* Card Body */}
               <div className="proj-compact-body">
                 <h3 className="proj-compact-title">{proj.title}</h3>
 
-                {/* Compact Before / After Strip */}
+                {/* Before / After Savings Strip */}
                 <div className="proj-compact-savings-bar">
                   <div className="savings-flow-wrap">
                     <div className="savings-drop-item">
-                      <span className="savings-label">Before</span>
+                      <span className="savings-label">Before Solar</span>
                       <span className="savings-val-before">{proj.quarterlyBefore}</span>
                     </div>
                     <span className="savings-arrow">→</span>
@@ -64,21 +73,22 @@ export default function RealCustomerProjects({ onOpenQuote }) {
                   </div>
                 </div>
 
-                {/* Specs / Hardware Text */}
-                <div className="proj-compact-hardware">
-                  <span>{proj.panels}</span> • <span>{proj.inverter}</span>
+                {/* Clean Hardware Specs Badges */}
+                <div className="proj-specs-tags-row">
+                  <span className="proj-spec-chip">{proj.panels}</span>
+                  <span className="proj-spec-chip chip-inv">{proj.inverter}</span>
                 </div>
 
-                {/* Action CTA */}
+                {/* Action CTA Row */}
                 <div className="proj-compact-action-row">
                   <button
                     type="button"
-                    className="btn btn-hero-emerald btn-sm"
+                    className="btn btn-hero-emerald btn-sm btn-shimmer"
                     style={{ flex: 1, justifyContent: 'center' }}
                     onClick={() => onOpenQuote({ package: `Similar to ${proj.title}` })}
                   >
                     <span>Get Similar Quote</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={14} className="btn-arrow-motion" />
                   </button>
                   <Link
                     to={`/projects/${proj.id}`}

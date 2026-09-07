@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, ArrowRight, ShieldCheck, Check, Sparkles, Sun, DollarSign, Award, Layers, Cpu } from 'lucide-react';
+import { Zap, ArrowRight, ShieldCheck, Check, Sparkles, Sun, DollarSign, Award, Cpu, Star, CheckCircle2 } from 'lucide-react';
 import { SOLAR_PACKAGES } from '../data/siteData';
 
 export default function SolarPackageComparisonTable({ onOpenQuote }) {
@@ -20,7 +20,7 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
           </p>
         </div>
 
-        {/* Matrix Comparison Container */}
+        {/* Matrix Comparison Card */}
         <div className="comparison-table-card">
           <div className="table-responsive-wrapper">
             <table className="comparison-matrix-table">
@@ -35,20 +35,25 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
                       key={pkg.id}
                       className={`th-pkg-col ${pkg.featured ? 'is-highlighted-col' : ''}`}
                     >
-                      {pkg.featured && (
+                      {pkg.featured ? (
                         <div className="matrix-featured-badge">
-                          <Sparkles size={11} />
-                          <span>Most Popular</span>
+                          <Sparkles size={12} />
+                          <span>#1 MOST POPULAR FOR QLD HOMES</span>
                         </div>
+                      ) : (
+                        <div className="matrix-sub-badge">{pkg.tier} RANGE</div>
                       )}
-                      <div className="matrix-pkg-tier">{pkg.tier}</div>
+                      
                       <div className="matrix-pkg-kw">{pkg.systemSize}</div>
-                      <div className="matrix-pkg-price">
-                        <span className="matrix-price-num">{pkg.dailyRate}</span>
-                        <span className="matrix-price-period">/ day</span>
-                      </div>
-                      <div className="matrix-pkg-weekly">
-                        ({pkg.weeklyRate}/wk Brighte finance)
+                      
+                      <div className="matrix-pkg-price-wrap">
+                        <div className="matrix-price-row">
+                          <span className="matrix-price-num">{pkg.dailyRate}</span>
+                          <span className="matrix-price-period">/ day</span>
+                        </div>
+                        <div className="matrix-pkg-weekly-pill">
+                          $0 Deposit • {pkg.weeklyRate}/wk Brighte Finance
+                        </div>
                       </div>
                     </th>
                   ))}
@@ -56,11 +61,16 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
               </thead>
               <tbody>
                 {/* Row 1: Solar Panels */}
-                <tr>
+                <tr className="matrix-hover-row">
                   <td className="td-feature-title">
                     <div className="feature-icon-label">
-                      <Sun size={16} className="text-emerald" />
-                      <span>Solar Panels</span>
+                      <div className="matrix-icon-circle icon-circle-emerald">
+                        <Sun size={18} strokeWidth={2.4} />
+                      </div>
+                      <div>
+                        <div className="matrix-row-title">Solar Panels</div>
+                        <div className="matrix-row-sub">Tier-1 N-Type Technology</div>
+                      </div>
                     </div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
@@ -72,11 +82,16 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
                 </tr>
 
                 {/* Row 2: Inverter Model */}
-                <tr>
+                <tr className="matrix-hover-row">
                   <td className="td-feature-title">
                     <div className="feature-icon-label">
-                      <Cpu size={16} className="text-emerald" />
-                      <span>Smart Inverter</span>
+                      <div className="matrix-icon-circle icon-circle-amber">
+                        <Cpu size={18} strokeWidth={2.4} />
+                      </div>
+                      <div>
+                        <div className="matrix-row-title">Smart Inverter</div>
+                        <div className="matrix-row-sub">High Efficiency WiFi Unit</div>
+                      </div>
                     </div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
@@ -88,59 +103,85 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
                 </tr>
 
                 {/* Row 3: Daily Generation */}
-                <tr>
+                <tr className="matrix-hover-row">
                   <td className="td-feature-title">
                     <div className="feature-icon-label">
-                      <Zap size={16} className="text-emerald" />
-                      <span>Est. Daily Generation</span>
+                      <div className="matrix-icon-circle icon-circle-cyan">
+                        <Zap size={18} strokeWidth={2.4} />
+                      </div>
+                      <div>
+                        <div className="matrix-row-title">Est. Daily Generation</div>
+                        <div className="matrix-row-sub">Average Daily QLD Yield</div>
+                      </div>
                     </div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
                     <td key={pkg.id} className={pkg.featured ? 'is-highlighted-cell' : ''}>
-                      <span className="matrix-val-highlight-green">{pkg.estGeneration}</span>
+                      <div className="matrix-pill-tag tag-emerald">
+                        <Zap size={13} />
+                        <span>{pkg.estGeneration}</span>
+                      </div>
                       <div className="matrix-val-sub">Clean energy daily output</div>
                     </td>
                   ))}
                 </tr>
 
                 {/* Row 4: Annual Savings */}
-                <tr>
+                <tr className="matrix-hover-row">
                   <td className="td-feature-title">
                     <div className="feature-icon-label">
-                      <DollarSign size={16} className="icon-gold" />
-                      <span>Est. Annual Bill Savings</span>
+                      <div className="matrix-icon-circle icon-circle-gold">
+                        <DollarSign size={18} strokeWidth={2.4} />
+                      </div>
+                      <div>
+                        <div className="matrix-row-title">Est. Annual Savings</div>
+                        <div className="matrix-row-sub">Bill Reduction Range</div>
+                      </div>
                     </div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
                     <td key={pkg.id} className={pkg.featured ? 'is-highlighted-cell' : ''}>
-                      <span className="matrix-val-highlight-gold">{pkg.estAnnualSavings}</span>
+                      <div className="matrix-pill-tag tag-gold">
+                        <DollarSign size={13} />
+                        <span>{pkg.estAnnualSavings}</span>
+                      </div>
                       <div className="matrix-val-sub">Off typical electricity bills</div>
                     </td>
                   ))}
                 </tr>
 
                 {/* Row 5: Federal STC Rebate */}
-                <tr>
+                <tr className="matrix-hover-row">
                   <td className="td-feature-title">
                     <div className="feature-icon-label">
-                      <Award size={16} className="text-emerald" />
-                      <span>Federal STC Rebate</span>
+                      <div className="matrix-icon-circle icon-circle-emerald">
+                        <Award size={18} strokeWidth={2.4} />
+                      </div>
+                      <div>
+                        <div className="matrix-row-title">Federal STC Rebate</div>
+                        <div className="matrix-row-sub">Govt Point of Sale Savings</div>
+                      </div>
                     </div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
                     <td key={pkg.id} className={pkg.featured ? 'is-highlighted-cell' : ''}>
-                      <span className="matrix-val-rebate">{pkg.stcRebate}</span>
-                      <div className="matrix-val-sub">Point-of-sale deduction</div>
+                      <div className="matrix-val-rebate-text">{pkg.stcRebate}</div>
+                      <div className="matrix-val-sub">Point-of-sale deduction included</div>
                     </td>
                   ))}
                 </tr>
 
-                {/* Row 6: Warranty Backing */}
-                <tr>
+                {/* Row 6: Warranty Protection */}
+                <tr className="matrix-hover-row">
                   <td className="td-feature-title">
                     <div className="feature-icon-label">
-                      <ShieldCheck size={16} className="text-emerald" />
-                      <span>Warranty Protection</span>
+                      <div className="matrix-icon-circle icon-circle-blue">
+                        <ShieldCheck size={18} strokeWidth={2.4} />
+                      </div>
+                      <div>
+                        <div className="matrix-row-title">Warranty Protection</div>
+                        <div className="matrix-row-sub">Full Coverage Backing</div>
+                      </div>
                     </div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
@@ -154,7 +195,8 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
                 {/* Row 7: Action CTA */}
                 <tr className="matrix-action-row">
                   <td className="td-feature-title" style={{ borderBottom: 'none' }}>
-                    <div className="matrix-action-title">Get Quote for This System</div>
+                    <div className="matrix-action-title">Choose System</div>
+                    <div className="matrix-val-sub">Get tailored quote & CAD layout</div>
                   </td>
                   {SOLAR_PACKAGES.map((pkg) => (
                     <td
@@ -164,12 +206,12 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
                     >
                       <button
                         type="button"
-                        className={`btn ${pkg.featured ? 'btn-hero-emerald' : 'btn-outline'} btn-sm`}
+                        className={`btn ${pkg.featured ? 'btn-hero-emerald' : 'btn-matrix-outline'}`}
                         style={{ width: '100%', justifyContent: 'center' }}
                         onClick={() => onOpenQuote({ package: pkg.name, system: pkg.systemSize })}
                       >
                         <span>Select {pkg.systemSize}</span>
-                        <ArrowRight size={14} />
+                        <ArrowRight size={15} />
                       </button>
                     </td>
                   ))}
@@ -182,10 +224,12 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
         {/* Bottom Price Beat Guarantee Box */}
         <div className="matrix-guarantee-bar">
           <div className="matrix-guarantee-left">
-            <ShieldCheck size={28} className="text-emerald" />
+            <div className="matrix-guarantee-icon">
+              <ShieldCheck size={24} />
+            </div>
             <div>
-              <strong>30-Day Price Beat Promise:</strong>
-              <span> If you find a comparable Clean Energy Council approved quote cheaper, we’ll beat it!</span>
+              <strong className="matrix-guarantee-title">30-Day Price Beat Promise:</strong>
+              <span className="matrix-guarantee-desc"> If you find a comparable Clean Energy Council approved quote cheaper, we’ll beat it!</span>
             </div>
           </div>
           <button
@@ -201,3 +245,4 @@ export default function SolarPackageComparisonTable({ onOpenQuote }) {
     </section>
   );
 }
+

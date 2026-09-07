@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   DollarSign, Tag, Zap, Globe, ClipboardCheck, ArrowRight,
-  ShieldCheck, Award, FileText, Leaf, CheckCircle2
+  ShieldCheck, Award, FileText, Leaf, Sparkles, CheckCircle2, Calculator, Sun, MapPin
 } from 'lucide-react';
 
 export default function GovernmentRebates({ onOpenQuote }) {
+  const [selectedKw, setSelectedKw] = useState('10.5');
+  const [postcode, setPostcode] = useState('');
+
+  const rebateData = {
+    '6.6': { kw: '6.6 kW', rebate: '$2,450', netSaving: 'Saves ~$1,650/yr', panels: '15 x 440W Panels' },
+    '10.5': { kw: '10.5 kW', rebate: '$3,650', netSaving: 'Saves ~$2,600/yr', panels: '24 x 440W Panels' },
+    '13.2': { kw: '13.2 kW', rebate: '$4,200', netSaving: 'Saves ~$3,400/yr', panels: '30 x 440W Panels' },
+    '20.0': { kw: '20.0 kW', rebate: '$6,500', netSaving: 'Saves ~$5,800/yr', panels: '46 x 440W Commercial' }
+  };
+
+  const currentRebate = rebateData[selectedKw];
+
   return (
     <section className="section government-rebates-section" id="rebates">
       <div className="container-wide">
@@ -28,31 +40,67 @@ export default function GovernmentRebates({ onOpenQuote }) {
                 Under the Australian Federal Government’s <strong>Small-scale Renewable Energy Scheme (SRES)</strong>, every eligible household and commercial premise qualifies for upfront <strong>Small-scale Technology Certificates (STCs)</strong>.
               </p>
 
+              {/* Interactive STC Rebate Calculator Widget */}
+              <div className="rebate-interactive-calculator">
+                <div className="calc-widget-header">
+                  <div className="calc-widget-title">
+                    <Calculator size={16} className="text-emerald" />
+                    <span>Instant STC Rebate Estimator</span>
+                  </div>
+                  <span className="calc-widget-badge">Point-of-Sale Discount</span>
+                </div>
+                <div className="calc-system-selector-row">
+                  <span className="selector-label">Select System Size:</span>
+                  <div className="selector-btns-group">
+                    {Object.keys(rebateData).map((key) => (
+                      <button
+                        key={key}
+                        type="button"
+                        className={`btn-kw-select ${selectedKw === key ? 'active' : ''}`}
+                        onClick={() => setSelectedKw(key)}
+                      >
+                        {rebateData[key].kw}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="calc-result-display-strip">
+                  <div className="rebate-result-box">
+                    <span className="rebate-res-label">Upfront Government STC Rebate:</span>
+                    <span className="rebate-res-val">{currentRebate.rebate} OFF</span>
+                  </div>
+                  <div className="rebate-result-sub-info">
+                    <CheckCircle2 size={13} className="text-emerald" />
+                    <span>Deducted at point-of-sale • {currentRebate.panels} • {currentRebate.netSaving}</span>
+                  </div>
+                </div>
+              </div>
+
               {/* 3 Incentive Cards */}
               <div className="rebates-cards-layout">
                 <div className="rebates-top-cards-row">
                   {/* Card 1: Point-of-Sale Discount */}
                   <div className="rebate-feature-card card-green">
-                    <div className="rebate-card-icon-wrap icon-green">
-                      <Tag size={18} />
+                    <div className="rebate-card-icon-wrap icon-circle-emerald">
+                      <Tag size={18} strokeWidth={2.4} />
                     </div>
                     <div className="rebate-card-content">
                       <h3 className="rebate-card-title text-emerald-dark">Point-of-Sale Discount</h3>
                       <p className="rebate-card-text">
-                        You don’t have to wait for a tax refund. Quick Solar applies the full STC value as an instant discount on your invoice.
+                        No waiting for tax refunds. Quick Solar applies the full STC rebate as an instant discount on your invoice.
                       </p>
                     </div>
                   </div>
 
                   {/* Card 2: Feed-in Tariffs */}
                   <div className="rebate-feature-card card-amber">
-                    <div className="rebate-card-icon-wrap icon-amber">
-                      <Zap size={18} />
+                    <div className="rebate-card-icon-wrap icon-circle-gold">
+                      <Zap size={18} strokeWidth={2.4} />
                     </div>
                     <div className="rebate-card-content">
                       <h3 className="rebate-card-title text-amber-dark">Feed-in Tariffs (FiTs)</h3>
                       <p className="rebate-card-text">
-                        Earn credits on every kilowatt-hour of surplus clean electricity your panels send back into the energy grid.
+                        Earn automatic credits on every kilowatt-hour of surplus clean electricity sent back into the grid.
                       </p>
                     </div>
                   </div>
@@ -60,125 +108,101 @@ export default function GovernmentRebates({ onOpenQuote }) {
 
                 {/* Card 3: QLD & WA State Rebates */}
                 <div className="rebate-feature-card card-blue">
-                  <div className="rebate-card-icon-wrap icon-blue">
-                    <Globe size={18} />
+                  <div className="rebate-card-icon-wrap icon-circle-cyan">
+                    <Globe size={18} strokeWidth={2.4} />
                   </div>
                   <div className="rebate-card-content">
                     <h3 className="rebate-card-title text-blue-dark">QLD & WA State Rebates</h3>
                     <p className="rebate-card-text">
-                      Stack additional regional battery booster schemes and zero-interest initiatives where available.
+                      Stack regional battery booster schemes and zero-interest initiatives for maximum savings.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Isometric Eco-House Illustration & Eligibility Card */}
+            {/* Right Column: High-Tech Postcode & Financial Rebate Breakdown Master Card */}
             <div className="rebates-visual-col">
-              {/* Isometric 3D Solar Home Illustration */}
-              <div className="isometric-house-wrapper">
-                <svg
-                  viewBox="0 0 500 360"
-                  className="isometric-house-svg"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Solar powered home with battery storage illustration"
-                >
-                  {/* Base Green Island / Lawn */}
-                  <ellipse cx="250" cy="270" rx="190" ry="65" fill="#e8f5e9" />
-                  <ellipse cx="250" cy="265" rx="175" ry="55" fill="#c8e6c9" />
-                  <ellipse cx="250" cy="260" rx="160" ry="48" fill="#a5d6a7" />
-                  <ellipse cx="250" cy="255" rx="145" ry="40" fill="#81c784" />
+              <div className="rebate-master-eligibility-card">
+                <div className="card-top-header">
+                  <div className="live-status-pill">
+                    <span className="live-dot-pulse" />
+                    <span>SRES REGULATOR DIRECTORY 2026</span>
+                  </div>
+                  <h3 className="master-card-title">Instant Postcode Rebate Lookup</h3>
+                  <p className="master-card-desc">Check official SRES government incentive deductions & bill savings for your suburb.</p>
+                </div>
 
-                  {/* Shrubbery & Trees */}
-                  <circle cx="120" cy="235" r="22" fill="#43a047" />
-                  <circle cx="110" cy="245" r="16" fill="#388e3c" />
-                  <circle cx="390" cy="240" r="24" fill="#43a047" />
-                  <circle cx="405" cy="250" r="18" fill="#2e7d32" />
-
-                  {/* House Main Body */}
-                  {/* Left Wall */}
-                  <polygon points="175,185 240,225 240,270 175,230" fill="#f8fafc" />
-                  {/* Right Wall */}
-                  <polygon points="240,225 330,175 330,220 240,270" fill="#e2e8f0" />
-
-                  {/* Front/Side Windows */}
-                  <polygon points="188,205 208,218 208,235 188,222" fill="#38bdf8" opacity="0.9" />
-                  <polygon points="216,222 232,232 232,248 216,238" fill="#38bdf8" opacity="0.9" />
-
-                  {/* Door */}
-                  <polygon points="265,225 290,210 290,250 265,263" fill="#059669" />
-                  <polygon points="270,228 285,219 285,248 270,256" fill="#10b981" />
-
-                  {/* Roof Base */}
-                  <polygon points="160,185 240,135 345,175 265,225" fill="#1e293b" />
-
-                  {/* Solar Panels on Roof */}
-                  <polygon points="185,180 235,148 255,160 205,192" fill="#0284c7" stroke="#38bdf8" strokeWidth="2" />
-                  <polygon points="210,195 260,163 280,175 230,207" fill="#0369a1" stroke="#38bdf8" strokeWidth="2" />
-                  <polygon points="235,210 285,178 305,190 255,222" fill="#075985" stroke="#38bdf8" strokeWidth="2" />
-
-                  {/* Solar Panel Grid Lines */}
-                  <line x1="195" y1="186" x2="245" y2="154" stroke="#e0f2fe" strokeWidth="1" strokeDasharray="3,3" />
-                  <line x1="220" y1="201" x2="270" y2="169" stroke="#e0f2fe" strokeWidth="1" strokeDasharray="3,3" />
-                  <line x1="245" y1="216" x2="295" y2="184" stroke="#e0f2fe" strokeWidth="1" strokeDasharray="3,3" />
-
-                  {/* Green Battery Storage Tower Beside House */}
-                  <polygon points="340,205 370,188 370,248 340,265" fill="#059669" />
-                  <polygon points="370,188 395,202 395,260 370,248" fill="#047857" />
-                  <polygon points="340,205 365,190 395,202 370,217" fill="#10b981" />
-                  {/* Battery Status LED */}
-                  <circle cx="355" cy="225" r="3" fill="#34d399" />
-                  <circle cx="355" cy="235" r="3" fill="#34d399" />
-                  <circle cx="355" cy="245" r="3" fill="#34d399" />
-
-                  {/* Floating Dollar Coin Badge & Energy Orbit */}
-                  <path
-                    d="M 180,180 A 140,80 0 0,1 360,160"
-                    stroke="#10b981"
-                    strokeWidth="2"
-                    strokeDasharray="6,6"
-                    fill="none"
+                {/* Postcode Search Input Field */}
+                <div className="postcode-search-box">
+                  <MapPin size={18} className="text-emerald" />
+                  <input
+                    type="text"
+                    placeholder="Enter Suburb or Postcode (e.g. 4000, 4217)..."
+                    value={postcode}
+                    onChange={(e) => setPostcode(e.target.value)}
+                    className="postcode-input"
                   />
-                  <circle cx="270" cy="95" r="28" fill="#10b981" filter="drop-shadow(0 6px 12px rgba(16, 185, 129, 0.4))" />
-                  <circle cx="270" cy="95" r="24" fill="#059669" />
-                  <text
-                    x="270"
-                    y="104"
-                    fill="#ffffff"
-                    fontSize="24"
-                    fontWeight="bold"
-                    textAnchor="middle"
-                    fontFamily="sans-serif"
+                  <button
+                    type="button"
+                    className="btn btn-hero-emerald btn-sm"
+                    onClick={() => onOpenQuote({ postcode, rebateCheck: true })}
                   >
-                    $
-                  </text>
-                </svg>
-              </div>
+                    <span>Check</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
 
-              {/* Interactive Eligibility Box */}
-              <div
-                className="rebates-eligibility-card"
-                onClick={onOpenQuote}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter') onOpenQuote(); }}
-              >
-                <div className="eligibility-icon-wrap">
-                  <ClipboardCheck size={24} />
+                {/* Quick Suburb Select Pills */}
+                <div className="quick-postcode-pills">
+                  <span className="quick-label">Quick Locations:</span>
+                  <button type="button" className="quick-pill" onClick={() => setPostcode('4000 (Brisbane CBD)')}>Brisbane (4000)</button>
+                  <button type="button" className="quick-pill" onClick={() => setPostcode('4217 (Gold Coast)')}>Gold Coast (4217)</button>
+                  <button type="button" className="quick-pill" onClick={() => setPostcode('4305 (Ipswich)')}>Ipswich (4305)</button>
+                  <button type="button" className="quick-pill" onClick={() => setPostcode('6000 (Perth WA)')}>Perth (6000)</button>
                 </div>
-                <div className="eligibility-text-wrap">
-                  <h3 className="eligibility-title">Check Your Rebate Eligibility</h3>
-                  <p className="eligibility-sub">See how much you can save with government incentives.</p>
+
+                {/* Live Savings Financial Breakdown Box */}
+                <div className="rebate-financial-breakdown-card">
+                  <div className="breakdown-row">
+                    <div className="breakdown-item">
+                      <span className="bd-label">Upfront STC Discount</span>
+                      <span className="bd-val text-emerald">-$3,650</span>
+                    </div>
+                    <div className="breakdown-divider" />
+                    <div className="breakdown-item">
+                      <span className="bd-label">State Battery Booster</span>
+                      <span className="bd-val text-cyan">Up to $4,000</span>
+                    </div>
+                  </div>
+                  <div className="breakdown-metrics-grid">
+                    <div className="bd-metric">
+                      <Zap size={14} className="text-emerald" />
+                      <span>Avg. 85%–95% Bill Reduction</span>
+                    </div>
+                    <div className="bd-metric">
+                      <ShieldCheck size={14} className="text-emerald" />
+                      <span>2.6 Year Est. Payback</span>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Direct Action CTA */}
                 <button
                   type="button"
-                  className="eligibility-arrow-btn"
-                  aria-label="Check Rebate Eligibility"
+                  className="btn btn-hero-emerald btn-lg btn-shimmer"
+                  style={{ width: '100%', justifyContent: 'center', marginTop: '1.25rem' }}
+                  onClick={() => onOpenQuote({ postcode, rebateCheck: true })}
                 >
-                  <ArrowRight size={20} />
+                  <Award size={18} />
+                  <span>Claim My Postcode Rebates</span>
+                  <ArrowRight size={18} className="btn-arrow-motion" />
                 </button>
+
+                <div className="master-card-trust-note">
+                  <CheckCircle2 size={14} className="text-emerald" />
+                  <span>100% Free Consultation • Official STC Certificate Claim Handled</span>
+                </div>
               </div>
             </div>
           </div>
@@ -191,7 +215,7 @@ export default function GovernmentRebates({ onOpenQuote }) {
               </div>
               <div className="rebate-trust-text">
                 <strong>Government Approved</strong>
-                <span>Fully compliant & accredited</span>
+                <span>Fully compliant CEC & SAA installers</span>
               </div>
             </div>
 
@@ -200,8 +224,8 @@ export default function GovernmentRebates({ onOpenQuote }) {
                 <Tag size={20} />
               </div>
               <div className="rebate-trust-text">
-                <strong>Instant Discount</strong>
-                <span>No waiting for tax refunds</span>
+                <strong>Instant Point-of-Sale Discount</strong>
+                <span>No waiting for annual tax refunds</span>
               </div>
             </div>
 
@@ -210,8 +234,8 @@ export default function GovernmentRebates({ onOpenQuote }) {
                 <FileText size={20} />
               </div>
               <div className="rebate-trust-text">
-                <strong>Maximise Your Savings</strong>
-                <span>Up to $4,200 in STC rebates</span>
+                <strong>Maximise STC Rebates</strong>
+                <span>Up to $4,200 in SRES certificates</span>
               </div>
             </div>
 
@@ -221,7 +245,7 @@ export default function GovernmentRebates({ onOpenQuote }) {
               </div>
               <div className="rebate-trust-text">
                 <strong>Clean Energy Future</strong>
-                <span>Lower bills, greener tomorrow</span>
+                <span>Lower bills, greener Australia</span>
               </div>
             </div>
           </div>
