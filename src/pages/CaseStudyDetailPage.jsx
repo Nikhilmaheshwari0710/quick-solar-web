@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, DollarSign, Battery, Sun, Zap } from 'lucide-react';
+import { MapPin, ArrowRight } from 'lucide-react';
 import { REAL_PROJECTS } from '../data/siteData';
 
 export default function CaseStudyDetailPage({ onOpenQuote }) {

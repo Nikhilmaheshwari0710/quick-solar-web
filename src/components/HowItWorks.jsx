@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, PenTool, CheckCircle, Wrench, ArrowRight } from 'lucide-react';
+import { Wrench, ArrowRight } from 'lucide-react';
 
 export default function HowItWorks({ onOpenQuote }) {
   const steps = [

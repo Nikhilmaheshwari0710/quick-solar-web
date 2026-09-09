@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Battery, Sun, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Zap, ArrowRight } from 'lucide-react';
 import BatteryStorageShowcase from '../components/BatteryStorageShowcase';
 import SolarSavingsCalculator from '../components/SolarSavingsCalculator';
 import Testimonials from '../components/Testimonials';

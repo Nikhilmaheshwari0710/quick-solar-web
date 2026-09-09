@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, MapPin, Zap, ArrowRight, DollarSign, Battery, CheckCircle2 } from 'lucide-react';
+import { Award, MapPin, ArrowRight } from 'lucide-react';
 import { REAL_PROJECTS } from '../data/siteData';
 
 export default function ProjectsPage({ onOpenQuote }) {

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
+import React from 'react';
+import { MapPin, ArrowRight } from 'lucide-react';
 import { SERVICE_LOCATIONS } from '../data/siteData';
 
 export default function LocationsPage({ onOpenQuote }) {
-  const [selectedLoc, setSelectedLoc] = useState(SERVICE_LOCATIONS[0]);
 
   return (
     <div className="page-locations">

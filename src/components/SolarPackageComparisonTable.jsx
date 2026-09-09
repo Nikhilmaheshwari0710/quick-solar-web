@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, ArrowRight, ShieldCheck, Check, Sparkles, Sun, DollarSign, Award, Cpu, Star, CheckCircle2 } from 'lucide-react';
+import { Zap, ArrowRight, ShieldCheck, Sparkles, Sun, DollarSign, Award, Cpu } from 'lucide-react';
 import { SOLAR_PACKAGES } from '../data/siteData';
 
 export default function SolarPackageComparisonTable({ onOpenQuote }) {

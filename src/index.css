@@ -15,12 +15,12 @@
   --accent-cyan-light: #ecfeff;
 
   /* Neutrals & Dark Tones */
-  --slate-900: #0b132b;
-  --slate-800: #1c2541;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
   --slate-700: #334155;
   --slate-600: #475569;
-  --slate-500: #64748b;
-  --slate-400: #94a3b8;
+  --slate-500: #475569;
+  --slate-400: #64748b;
   --slate-300: #cbd5e1;
   --slate-200: #e2e8f0;
   --slate-100: #f1f5f9;
@@ -58,25 +58,28 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth is intentionally removed — Lenis handles smooth scrolling */
+  scroll-behavior: auto;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  height: auto;
 }
 
 body {
   font-family: var(--font-body);
-  color: var(--slate-700);
+  color: #1e293b;
   background-color: var(--slate-50);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--slate-900);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.25;
 }
 
@@ -97,6 +100,7 @@ button {
 input, select, textarea {
   font-family: inherit;
   font-size: 1rem;
+  color: var(--slate-900);
 }
 
 img {
@@ -165,57 +169,64 @@ img {
   background-color: var(--white);
 }
 
-/* Badges & Pills */
+/* Section Eyebrow Text (Clean Text-Only without Pill Badges) */
 .pill-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius-full);
+  gap: 0.45rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent !important;
+  border: none !important;
   font-size: 0.825rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
 .pill-badge-emerald {
-  background: var(--primary-light);
-  color: var(--primary-hover);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: transparent !important;
+  color: var(--primary) !important;
+  border: none !important;
 }
 
 .pill-badge-gold {
-  background: var(--sun-gold-light);
-  color: var(--sun-gold-hover);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: transparent !important;
+  color: var(--sun-gold-hover) !important;
+  border: none !important;
 }
 
 .pill-badge-dark {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--sun-gold);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
+  background: transparent !important;
+  color: var(--sun-gold) !important;
+  border: none !important;
+  backdrop-filter: none !important;
 }
 
 /* Section Header Generic */
 .section-header {
   text-align: center;
-  max-width: 760px;
+  max-width: 780px;
   margin: 0 auto 3.5rem auto;
 }
 
 .section-header .section-subtitle {
-  font-size: 1.125rem;
-  color: var(--slate-500);
+  font-size: 1.15rem;
+  color: #334155;
   margin-top: 0.85rem;
+  line-height: 1.6;
+  font-weight: 500;
 }
 
 .section-dark .section-header .section-subtitle {
-  color: var(--slate-300);
+  color: var(--slate-200);
 }
 
 .section-header .section-title {
   font-size: 2.35rem;
+  font-weight: 800;
   margin-top: 0.5rem;
   letter-spacing: -0.02em;
 }
@@ -232,8 +243,8 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.65rem;
-  font-size: 1rem;
+  padding: 0.9rem 1.85rem;
+  font-size: 1.05rem;
   font-weight: 700;
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
@@ -291,8 +302,8 @@ img {
 }
 
 .btn-lg {
-  padding: 1.05rem 2.1rem;
-  font-size: 1.1rem;
+  padding: 1.15rem 2.25rem;
+  font-size: 1.125rem;
   border-radius: var(--radius-lg);
 }
 
@@ -347,3 +358,48 @@ img {
 .animate-float {
   animation: floatSlow 4s infinite ease-in-out;
 }
+
+/* =========================================================
+   SCROLL PERFORMANCE
+   ========================================================= */
+
+/* Only promote animated/fixed elements to GPU layers — NOT all sections */
+.hero-bg-video,
+.hero-ambient-orb,
+.hero-video-overlay {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Smooth tap on mobile */
+a, button, .btn, [class*="btn-"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* GPU Hardware Acceleration for dynamic transforms */
+.reveal-fade-up,
+.reveal-slide-left,
+.reveal-slide-right,
+.reveal-zoom-in,
+.reveal-stagger-group {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Slim premium scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.5);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.8);
+}
+

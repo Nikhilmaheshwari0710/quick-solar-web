@@ -1,5 +1,5 @@
 import React from 'react';
-import { DollarSign, CheckCircle2, ShieldCheck, ArrowRight, Clock, Award } from 'lucide-react';
+import { DollarSign, ArrowRight, Clock } from 'lucide-react';
 import GovernmentRebates from '../components/GovernmentRebates';
 
 export default function FinancePage({ onOpenQuote }) {

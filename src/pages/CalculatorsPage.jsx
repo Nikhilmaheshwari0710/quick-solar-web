@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, DollarSign, Battery, TrendingUp, Award, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Calculator, ArrowRight } from 'lucide-react';
 import SolarSavingsCalculator from '../components/SolarSavingsCalculator';
 
 export default function CalculatorsPage({ onOpenQuote }) {

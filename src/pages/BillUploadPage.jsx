@@ -1,5 +1,5 @@
 import React, { useState, useId } from 'react';
-import { UploadCloud, FileText, CheckCircle2, ShieldCheck, ArrowRight, Phone } from 'lucide-react';
+import { UploadCloud, CheckCircle2, ShieldCheck, Phone } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { submitCrmLead } from '../utils/crm';
 
@@ -49,7 +49,7 @@ export default function BillUploadPage() {
         spread: 70,
         origin: { y: 0.6 }
       });
-    } catch (err) {
+    } catch {
       // ignore
     }
   };

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  Calculator, Calendar, ArrowRight, Star, DollarSign, Check,
-  ShieldCheck, Award, Users, MapPin, Sparkles, TrendingUp
+  Calculator, Calendar, ArrowRight, Star,
+  Award, Sparkles, MapPin, Zap
 } from 'lucide-react';
 
 export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
@@ -29,67 +29,69 @@ export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
         <div className="hero-left-focused-layout">
           {/* Left Column Content directly over Video */}
           <div className="hero-reference-content">
-            {/* Top Green Accreditation Pill */}
-            <div className="hero-accreditation-pill hero-anim-fade-in">
-              <span className="hero-accreditation-icon">
-                <Check size={12} strokeWidth={3} />
-              </span>
-              <span>CLEAN ENERGY COUNCIL & SAA ACCREDITED INSTALLER</span>
-              <Sparkles size={13} className="hero-sparkle-icon" />
+            {/* Top Text Kicker - Clean Normal Text (No Pill Badge) */}
+            <div className="hero-top-kicker hero-anim-fade-in">
+              <Zap size={14} className="hero-kicker-icon" />
+              <span>SECURE FEDERAL GOVERNMENT SOLAR BATTERY REBATE NOW</span>
+              <Sparkles size={14} className="hero-kicker-sparkle" />
             </div>
 
-            {/* Main Headline with Shimmer Gradient Text */}
+            {/* Main Headline */}
             <h1 className="hero-reference-title hero-anim-slide-up-1">
-              Slash Your Electricity Bills <br />
-              with <span className="text-emerald-shimmer">Premium Brisbane</span> <br />
-              <span className="text-gold-shimmer">Solar</span> from $3/Day.
+              Smart Energy Starts <br />
+              with <span className="text-emerald-shimmer">Solar Panels</span> <br />
+              <span className="text-gold-shimmer">& Battery Systems</span>.
             </h1>
 
             {/* Sub-headline */}
             <p className="hero-reference-subhead hero-anim-slide-up-2">
-              High-efficiency Tier 1 solar systems with $0 upfront finance, 25-year warranty and our 30-Day Price Beat Guarantee.
+              Keep your home Powered Day and night with Efficient solar and battery systems.
             </p>
 
-            {/* 4 Circular Trust Badges */}
-            <div className="hero-trust-badges-grid hero-anim-slide-up-3">
-              <div className="hero-badge-pill">
-                <div className="badge-circle-icon">
-                  <Check size={14} strokeWidth={3} />
-                </div>
-                <div className="badge-text-wrap">
-                  <div className="badge-line-1">30-Day</div>
-                  <div className="badge-line-2">Price Beat</div>
-                </div>
+            {/* 4 Trust & Deal Highlights - Clean Normal Text (No Pill Container / No Circles) */}
+            <div className="hero-deals-text-row hero-anim-slide-up-3">
+              <div
+                className="hero-deal-clean-item"
+                onClick={() => onOpenQuote && onOpenQuote({ package: '6.6 kW Solar System EOFY Deal', price: '$4690' })}
+                style={{ cursor: 'pointer' }}
+                title="View 6.6 kW Solar System EOFY Deal"
+              >
+                <span className="deal-kw-title">6.6 kW System</span>
+                <span className="deal-dash">•</span>
+                <span className="deal-price-highlight">From $4,690</span>
               </div>
 
-              <div className="hero-badge-pill">
-                <div className="badge-circle-icon badge-circle-text">
-                  $0
-                </div>
-                <div className="badge-text-wrap">
-                  <div className="badge-line-1">$0 Deposit</div>
-                  <div className="badge-line-2">Finance</div>
-                </div>
+              <div
+                className="hero-deal-clean-item"
+                onClick={() => onOpenQuote && onOpenQuote({ package: '10.56 kW Solar System EOFY Deal', price: '$6690' })}
+                style={{ cursor: 'pointer' }}
+                title="View 10.56 kW Solar System EOFY Deal"
+              >
+                <span className="deal-kw-title">10.56 kW System</span>
+                <span className="deal-dash">•</span>
+                <span className="deal-price-highlight">From $6,690</span>
               </div>
 
-              <div className="hero-badge-pill">
-                <div className="badge-circle-icon">
-                  <Award size={14} />
-                </div>
-                <div className="badge-text-wrap">
-                  <div className="badge-line-1">25-Yr Panel</div>
-                  <div className="badge-line-2">Warranty</div>
-                </div>
+              <div
+                className="hero-deal-clean-item"
+                onClick={() => onOpenQuote && onOpenQuote({ package: '13.3 kW Solar System EOFY Deal', price: '$7890' })}
+                style={{ cursor: 'pointer' }}
+                title="View 13.3 kW Solar System EOFY Deal"
+              >
+                <span className="deal-kw-title">13.3 kW System</span>
+                <span className="deal-dash">•</span>
+                <span className="deal-price-highlight">From $7,890</span>
               </div>
 
-              <div className="hero-badge-pill">
-                <div className="badge-circle-icon">
-                  <Users size={14} />
-                </div>
-                <div className="badge-text-wrap">
-                  <div className="badge-line-1">5,000+</div>
-                  <div className="badge-line-2">Installs</div>
-                </div>
+              <div
+                className="hero-deal-clean-item"
+                onClick={() => onOpenQuote && onOpenQuote()}
+                style={{ cursor: 'pointer' }}
+                title="View EOFY Premium Deals"
+              >
+                <span className="deal-kw-title">EOFY Premium</span>
+                <span className="deal-dash">•</span>
+                <span className="deal-price-highlight">Solar Deals</span>
               </div>
             </div>
 
@@ -101,14 +103,14 @@ export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
                 <ArrowRight size={18} className="btn-arrow-motion" />
               </button>
 
-              <button className="btn btn-hero-outline" onClick={onOpenQuote}>
+              <button className="btn btn-hero-outline" onClick={() => onOpenQuote && onOpenQuote()}>
                 <Calendar size={18} />
                 <span>Get Free Quote</span>
                 <ArrowRight size={18} />
               </button>
             </div>
 
-            {/* Left-Aligned Premium Glass Location & Google Review Box */}
+            {/* Left-Aligned Premium Location & Google Review Box */}
             <div className="hero-bottom-proof-box hero-anim-fade-in-delayed">
               {/* Row 1: Serving Locations */}
               <div className="proof-box-row proof-box-location">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, CheckCircle2, Zap, ArrowRight, Star, Phone, MessageSquare, Award } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Star, Phone, Award } from 'lucide-react';
 import SolarPackageComparisonTable from '../components/SolarPackageComparisonTable';
 import Testimonials from '../components/Testimonials';
 import TrustBadges from '../components/TrustBadges';
@@ -27,7 +27,7 @@ export default function GoogleAdsLandingSolarBrisbane({ onOpenQuote }) {
     setSubmitted(true);
     try {
       confetti({ particleCount: 90, spread: 60, origin: { y: 0.6 } });
-    } catch (err) {
+    } catch {
       // ignore
     }
   };

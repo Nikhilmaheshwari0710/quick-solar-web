@@ -1,10 +1,10 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { ShieldCheck, Award, ArrowRight, Download, CheckCircle2, Phone, Zap } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import { ShieldCheck, Award, ArrowRight, Phone, Zap } from 'lucide-react';
 import { PRODUCTS_CATALOG } from '../data/siteData';
 
 export default function ProductDetailPage({ onOpenQuote }) {
-  const { category, id } = useParams();
+  const { id } = useParams();
 
   // Find product across panels, inverters, batteries
   const allProducts = [

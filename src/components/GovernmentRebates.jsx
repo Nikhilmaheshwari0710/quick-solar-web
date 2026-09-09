@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-  DollarSign, Tag, Zap, Globe, ClipboardCheck, ArrowRight,
-  ShieldCheck, Award, FileText, Leaf, Sparkles, CheckCircle2, Calculator, Sun, MapPin
+  DollarSign, Tag, Zap, Globe, ArrowRight,
+  ShieldCheck, Award, FileText, Leaf, CheckCircle2, Calculator, MapPin
 } from 'lucide-react';
 
 export default function GovernmentRebates({ onOpenQuote }) {

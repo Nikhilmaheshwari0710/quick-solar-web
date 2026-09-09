@@ -1,7 +1,7 @@
 import React, { useState, useId } from 'react';
 import {
-  Calculator, Zap, DollarSign, TrendingUp, ShieldCheck, ArrowRight,
-  Battery, Sun, Lock, Tag, Wallet, Layers, Check, Shield, Award
+  Calculator, ShieldCheck, ArrowRight,
+  Battery, Sun, Lock, Tag, Wallet, Layers
 } from 'lucide-react';
 
 export default function SolarSavingsCalculator({ onOpenQuote }) {

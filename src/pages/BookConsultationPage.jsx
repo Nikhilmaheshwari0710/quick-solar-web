@@ -1,5 +1,5 @@
 import React, { useState, useId } from 'react';
-import { Calendar, Clock, Phone, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Calendar, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { submitCrmLead } from '../utils/crm';
 
@@ -34,7 +34,7 @@ export default function BookConsultationPage() {
     setSubmitted(true);
     try {
       confetti({ particleCount: 90, spread: 60, origin: { y: 0.6 } });
-    } catch (err) {
+    } catch {
       // ignore
     }
   };

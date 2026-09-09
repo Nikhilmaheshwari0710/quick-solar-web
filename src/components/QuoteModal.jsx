@@ -1,5 +1,5 @@
 import React, { useState, useId } from 'react';
-import { X, Check, ArrowRight, ArrowLeft, Sun, Battery, Building2, Home, Sparkles, Phone, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { X, ArrowRight, ArrowLeft, Sun, Battery, Building2, Home, Phone, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function QuoteModal({ isOpen, onClose, initialData = {} }) {
@@ -38,7 +38,7 @@ export default function QuoteModal({ isOpen, onClose, initialData = {} }) {
           spread: 70,
           origin: { y: 0.6 }
         });
-      } catch (e) {
+      } catch {
         // ignore
       }
     } else {

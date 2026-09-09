@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShieldCheck, CheckCircle2, Zap, ArrowRight, Home, Sun, Award, DollarSign } from 'lucide-react';
-import SolarPackageComparisonTable from '../components/SolarPackageComparisonTable';
+import { ArrowRight, Home, Award } from 'lucide-react';
+import SolarPackages from '../components/SolarPackages';
 import SolarSavingsCalculator from '../components/SolarSavingsCalculator';
 import Testimonials from '../components/Testimonials';
 
@@ -46,8 +46,8 @@ export default function ResidentialSolar({ onOpenQuote }) {
         </div>
       </section>
 
-      {/* Package Comparison */}
-      <SolarPackageComparisonTable onOpenQuote={onOpenQuote} />
+      {/* Package Showcase */}
+      <SolarPackages onOpenQuote={onOpenQuote} />
 
       {/* Roof Compatibility & Benefits */}
       <section className="section section-alt">

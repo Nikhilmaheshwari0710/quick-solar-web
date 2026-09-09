@@ -39,20 +39,16 @@ export async function submitCrmLead(leadData) {
     const existing = JSON.parse(localStorage.getItem('quick_solar_crm_leads') || '[]');
     existing.unshift(payload);
     localStorage.setItem('quick_solar_crm_leads', JSON.stringify(existing.slice(0, 100)));
-  } catch (e) {
-    console.warn('Could not save lead to localStorage', e);
+  } catch {
+    // ignore storage error
   }
 
   // 2. Mock or real API webhook dispatch to Quick Solar CRM
   try {
-    // In production, this can point to the Quick Solar CRM endpoint
-    console.log('[Quick Solar CRM Dispatch] New Lead Received:', payload);
-    
     // Simulate API network response
     await new Promise((resolve) => setTimeout(resolve, 600));
     return { success: true, leadId, message: 'Lead successfully routed to sales queue.' };
   } catch (err) {
-    console.error('CRM Submission error:', err);
     return { success: false, leadId, error: err.message };
   }
 }
@@ -66,12 +62,11 @@ export function trackInteraction(interactionType, details = {}) {
     ...tracking,
     ...details
   };
-  console.log(`[Interaction Tracked] ${interactionType}:`, interaction);
   try {
     const history = JSON.parse(localStorage.getItem('quick_solar_interactions') || '[]');
     history.unshift(interaction);
     localStorage.setItem('quick_solar_interactions', JSON.stringify(history.slice(0, 50)));
-  } catch (e) {
-    // ignore
+  } catch {
+    // ignore storage error
   }
 }

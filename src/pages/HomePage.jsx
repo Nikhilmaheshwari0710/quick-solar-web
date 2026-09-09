@@ -1,24 +1,20 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
-import TrustBadges from '../components/TrustBadges';
-import CustomerJourneySelector from '../components/CustomerJourneySelector';
+import RebateQuoteStrip from '../components/RebateQuoteStrip';
+import TrustedInstallerSection from '../components/TrustedInstallerSection';
 import SolarSavingsCalculator from '../components/SolarSavingsCalculator';
-import SolarPackageComparisonTable from '../components/SolarPackageComparisonTable';
 import SolarPackages from '../components/SolarPackages';
-import BatteryStorageShowcase from '../components/BatteryStorageShowcase';
-import ProductsShowcase from '../components/ProductsShowcase';
-import WhyQuickSolar from '../components/WhyQuickSolar';
-import RealCustomerProjects from '../components/RealCustomerProjects';
-import HowItWorks from '../components/HowItWorks';
-import GovernmentRebates from '../components/GovernmentRebates';
+import NoDepositFinanceSection from '../components/NoDepositFinanceSection';
+import BrisbaneSolarBenefitsSection from '../components/BrisbaneSolarBenefitsSection';
+import FinancePartnersQuoteSection from '../components/FinancePartnersQuoteSection';
+import BrandsWeInstall from '../components/BrandsWeInstall';
+import QuickSolarDifferenceSection from '../components/QuickSolarDifferenceSection';
 import Testimonials from '../components/Testimonials';
-import LocationsSection from '../components/LocationsSection';
-import FaqSection from '../components/FaqSection';
-import ContactSection from '../components/ContactSection';
+import OurProcessQuickContactSection from '../components/OurProcessQuickContactSection';
 import { useScrollAnimations } from '../utils/useScrollAnimations';
 
 export default function HomePage({ onOpenQuote }) {
-  const { scrollProgress } = useScrollAnimations();
+  useScrollAnimations();
 
   const handleScrollToCalculator = () => {
     const el = document.getElementById('calculator');
@@ -29,14 +25,11 @@ export default function HomePage({ onOpenQuote }) {
 
   return (
     <div className="page-home">
-      {/* Dynamic Scroll Reading Progress Indicator */}
+      {/* GPU-Accelerated Dynamic Scroll Reading Progress Indicator */}
       <div
         className="global-scroll-progress-bar"
-        style={{ width: `${scrollProgress}%` }}
         role="progressbar"
-        aria-valuenow={Math.round(scrollProgress)}
-        aria-valuemin={0}
-        aria-valuemax={100}
+        aria-label="Reading Progress"
       />
 
       {/* 1. Hero: Clear Brisbane/Australia Solar Message + Primary & Secondary CTAs */}
@@ -44,14 +37,14 @@ export default function HomePage({ onOpenQuote }) {
         <HeroSection onOpenQuote={onOpenQuote} onScrollToCalculator={handleScrollToCalculator} />
       </div>
 
-      {/* 2. Trust Section: Accreditations (CEC, SAA), 25-Yr Warranties, 5,000+ Installs */}
-      <div className="reveal-fade-up">
-        <TrustBadges />
+      {/* 2. Fast Rebate Quote Strip Form (Name, Email, Phone, Address) */}
+      <div className="reveal-fade-up is-revealed">
+        <RebateQuoteStrip onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 3. Customer Journey Selector (New / Upgrade / Commercial / Bill Upload) */}
-      <div className="reveal-stagger-group">
-        <CustomerJourneySelector onOpenQuote={onOpenQuote} />
+      {/* 3. Brisbane's Most Trusted Solar & Battery Panel Installer Section */}
+      <div className="reveal-fade-up">
+        <TrustedInstallerSection onOpenQuote={onOpenQuote} />
       </div>
 
       {/* 4. Solar Savings Calculator Entry */}
@@ -59,64 +52,44 @@ export default function HomePage({ onOpenQuote }) {
         <SolarSavingsCalculator onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 5. Solar Package Comparison Matrix */}
-      <div className="reveal-fade-up">
-        <SolarPackageComparisonTable onOpenQuote={onOpenQuote} />
-      </div>
-
-      {/* 6. Residential and Commercial Solar Packages */}
+      {/* 5. Residential and Commercial Solar Packages */}
       <div className="reveal-stagger-group">
         <SolarPackages onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 7. Solar + Battery Packages & 24/7 Flow Simulator */}
-      <div className="reveal-slide-left">
-        <BatteryStorageShowcase onOpenQuote={onOpenQuote} />
+      {/* 6. No Deposit Solar Finance Today Section */}
+      <div className="reveal-fade-up">
+        <NoDepositFinanceSection onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 8. Products: Tier-1 Panels, Smart Inverters, High-Capacity Batteries */}
+      {/* 7. Quick Solar Panel Installer in Brisbane Benefits Cards */}
       <div className="reveal-stagger-group">
-        <ProductsShowcase onOpenQuote={onOpenQuote} />
+        <BrisbaneSolarBenefitsSection onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 9. Why Quick Solar: 5-Pillar Asymmetric Bento Grid */}
-      <div className="reveal-zoom-in">
-        <WhyQuickSolar onOpenQuote={onOpenQuote} />
+      {/* 8. Flexible Solar Finance Partners (Brighte & Plenti) + Pre-Approval Quote */}
+      <div className="reveal-fade-up">
+        <FinancePartnersQuoteSection onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 10. Real Customer Projects & Case Studies */}
-      <div className="reveal-slide-right">
-        <RealCustomerProjects onOpenQuote={onOpenQuote} />
+      {/* 9. Brands We Install (CEC Approved Hardware Showcase) */}
+      <div className="reveal-fade-up">
+        <BrandsWeInstall onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 11. How It Works: 4-Step Seamless Installation Process */}
-      <div className="reveal-stagger-group">
-        <HowItWorks onOpenQuote={onOpenQuote} />
+      {/* 10. The Quick Solar Difference: 3-Step Tailored Process */}
+      <div className="reveal-fade-up">
+        <QuickSolarDifferenceSection onOpenQuote={onOpenQuote} />
       </div>
 
-      {/* 12. STC / Federal Government Rebate Information */}
-      <div className="reveal-zoom-in">
-        <GovernmentRebates onOpenQuote={onOpenQuote} />
-      </div>
-
-      {/* 13. Customer Reviews: Verified 4.9★ Google Feedback */}
+      {/* 11. Customer Reviews: Verified 4.9★ Google Feedback */}
       <div className="reveal-fade-up">
         <Testimonials />
       </div>
 
-      {/* 14. Service Areas: Brisbane Milton HQ, Logan, Ipswich, Gold Coast, Perth */}
-      <div className="reveal-fade-up">
-        <LocationsSection onOpenQuote={onOpenQuote} />
-      </div>
-
-      {/* 15. FAQ Preview */}
-      <div className="reveal-stagger-group">
-        <FaqSection onOpenQuote={onOpenQuote} />
-      </div>
-
-      {/* 16. Final Consultation Booking Form */}
+      {/* 12. Our Process & Quick Contact Section */}
       <div className="reveal-zoom-in">
-        <ContactSection onOpenQuote={onOpenQuote} />
+        <OurProcessQuickContactSection onOpenQuote={onOpenQuote} />
       </div>
     </div>
   );

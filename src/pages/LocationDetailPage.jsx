@@ -1,6 +1,6 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, ArrowRight, ShieldCheck, Award, Zap } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import { MapPin, Phone, ArrowRight } from 'lucide-react';
 import { SERVICE_LOCATIONS } from '../data/siteData';
 import SolarPackageComparisonTable from '../components/SolarPackageComparisonTable';
 import SolarSavingsCalculator from '../components/SolarSavingsCalculator';

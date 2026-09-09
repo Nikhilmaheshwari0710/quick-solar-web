@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, FileText, AlertCircle, HelpCircle } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 export default function LegalPage() {
   const [tab, setTab] = useState('privacy');

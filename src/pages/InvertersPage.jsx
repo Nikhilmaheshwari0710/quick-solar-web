@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Award, Zap, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Cpu, Award, ArrowRight } from 'lucide-react';
 import { PRODUCTS_CATALOG } from '../data/siteData';
 
 export default function InvertersPage({ onOpenQuote }) {

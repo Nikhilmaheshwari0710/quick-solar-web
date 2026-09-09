@@ -1,5 +1,5 @@
 import React from 'react';
-import { BatteryCharging, RefreshCw, Zap, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { BatteryCharging, RefreshCw, Zap, ArrowRight } from 'lucide-react';
 
 export default function BatteryUpgrade({ onOpenQuote }) {
   return (

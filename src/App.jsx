@@ -59,8 +59,10 @@ function AppContent({ quoteModalOpen, setQuoteModalOpen, modalInitialData, handl
             <Route path="/" element={<HomePage onOpenQuote={handleOpenQuote} />} />
 
             {/* 2. Solar */}
+            <Route path="/residential-solar-panel-system" element={<ResidentialSolar onOpenQuote={handleOpenQuote} />} />
             <Route path="/solar/residential-solar" element={<ResidentialSolar onOpenQuote={handleOpenQuote} />} />
             <Route path="/residential-solar" element={<ResidentialSolar onOpenQuote={handleOpenQuote} />} />
+            <Route path="/commercial-solar-panel-system" element={<CommercialSolar onOpenQuote={handleOpenQuote} />} />
             <Route path="/solar/commercial-solar" element={<CommercialSolar onOpenQuote={handleOpenQuote} />} />
             <Route path="/commercial-solar" element={<CommercialSolar onOpenQuote={handleOpenQuote} />} />
             <Route path="/solar/solar-panels" element={<SolarPanelsPage onOpenQuote={handleOpenQuote} />} />
@@ -69,6 +71,7 @@ function AppContent({ quoteModalOpen, setQuoteModalOpen, modalInitialData, handl
             <Route path="/solar-installation" element={<SolarInstallationPage onOpenQuote={handleOpenQuote} />} />
 
             {/* 3. Battery */}
+            <Route path="/solar-battery" element={<SolarBatteries onOpenQuote={handleOpenQuote} />} />
             <Route path="/battery/solar-batteries" element={<SolarBatteries onOpenQuote={handleOpenQuote} />} />
             <Route path="/solar-batteries" element={<SolarBatteries onOpenQuote={handleOpenQuote} />} />
             <Route path="/battery/battery-installation" element={<BatteryInstallationPage onOpenQuote={handleOpenQuote} />} />
@@ -137,6 +140,7 @@ function AppContent({ quoteModalOpen, setQuoteModalOpen, modalInitialData, handl
             <Route path="/finance/rebates-stcs" element={<FinancePage onOpenQuote={handleOpenQuote} />} />
 
             {/* 11. Contact */}
+            <Route path="/contact-us" element={<ContactPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/contact/get-a-quote" element={<ContactPage />} />
             <Route path="/contact/book-consultation" element={<BookConsultationPage />} />

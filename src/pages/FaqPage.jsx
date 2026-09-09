@@ -107,13 +107,18 @@ export default function FaqPage({ onOpenQuote }) {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
-            <p style={{ color: 'var(--slate-500)', marginBottom: '1rem' }}>
-              Still have questions? Call our local Brisbane solar engineering team directly.
-            </p>
-            <a href="tel:1300969557" className="btn btn-outline btn-lg" style={{ display: 'inline-flex' }}>
-              <Phone size={18} />
-              <span>Call 1300 969 557</span>
-            </a>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="tel:1300969557" className="btn btn-outline btn-lg" style={{ display: 'inline-flex' }}>
+                <Phone size={18} />
+                <span>Call 1300 969 557</span>
+              </a>
+              {onOpenQuote && (
+                <button className="btn btn-primary btn-lg" onClick={onOpenQuote} style={{ display: 'inline-flex' }}>
+                  <span>Get Fast Quote</span>
+                  <ArrowRight size={18} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </section>

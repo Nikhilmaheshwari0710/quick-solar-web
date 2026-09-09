@@ -1,36 +1,23 @@
 import React from 'react';
-import { ShieldCheck, Mail, Phone, Sparkles } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
-export default function TopNotificationBar({ onOpenQuote }) {
+const MARQUEE_TEXT = 'Secure Federal Government Solar Battery Rebate Now';
+
+// Repeat enough copies to fill any screen width seamlessly
+const items = Array(12).fill(MARQUEE_TEXT);
+
+export default function TopNotificationBar() {
   return (
-    <div className="top-bar">
-      <div className="container-wide top-bar-inner">
-        {/* Left: CEC Approved Seller & 30-Day Price Beat Guarantee */}
-        <div className="top-bar-left">
-          <div className="top-bar-live-status">
-            <span className="live-pulse-dot" />
-            <span>Brisbane & WA CEC Approved Retailer</span>
-          </div>
-          <div className="top-bar-divider-dot">•</div>
-          <div className="top-bar-item">
-            <ShieldCheck size={15} className="top-bar-icon-gold" />
-            <span>30-Day Price Beat Guarantee</span>
-          </div>
-        </div>
-
-        {/* Right: Email & Direct Phone Pill */}
-        <div className="top-bar-contacts">
-          <a href="mailto:info@quicksolar.com.au" className="top-bar-link">
-            <Mail size={13} />
-            <span>info@quicksolar.com.au</span>
-          </a>
-          <a href="tel:1300969557" className="top-bar-phone-pill">
-            <Phone size={13} className="phone-icon-pulse" />
-            <span>1300 969 557</span>
-          </a>
-        </div>
+    <div className="top-ticker-bar">
+      <div className="top-ticker-track">
+        {/* Double the items so the loop is seamless */}
+        {[...items, ...items].map((text, i) => (
+          <span key={i} className="top-ticker-item">
+            <Zap size={11} className="top-ticker-icon" />
+            {text}
+          </span>
+        ))}
       </div>
     </div>
   );
 }
-

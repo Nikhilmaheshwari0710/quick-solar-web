@@ -1,8 +1,7 @@
 import React, { useState, useId } from 'react';
 import {
   Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle2,
-  ShieldCheck, Award, Building2, Calendar, FileText, ArrowRight,
-  ExternalLink, Sparkles, HelpCircle, Check, Share2
+  ShieldCheck, Award, Building2, ArrowRight, Check
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { submitCrmLead, trackInteraction } from '../utils/crm';
@@ -61,7 +60,7 @@ export default function ContactPage() {
           spread: 70,
           origin: { y: 0.7 }
         });
-      } catch (err) {
+      } catch {
         // Ignore animation fallback
       }
     } catch (err) {

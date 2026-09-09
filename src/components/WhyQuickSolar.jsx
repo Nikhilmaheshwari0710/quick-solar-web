@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ShieldCheck, Award, DollarSign, Smartphone, HeartHandshake,
-  Zap, ArrowRight, CheckCircle2, Clock, MapPin, Sparkles, TrendingUp
+  ArrowRight, Sparkles
 } from 'lucide-react';
 
 export default function WhyQuickSolar({ onOpenQuote }) {

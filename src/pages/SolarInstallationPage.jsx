@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrench, ShieldCheck, CheckCircle2, ArrowRight, Zap, Award } from 'lucide-react';
+import { Wrench, ArrowRight } from 'lucide-react';
 import HowItWorks from '../components/HowItWorks';
 import TrustBadges from '../components/TrustBadges';
 

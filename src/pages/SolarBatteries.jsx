@@ -1,5 +1,5 @@
 import React from 'react';
-import { BatteryCharging, ShieldCheck, Zap, ArrowRight, CheckCircle2, Award } from 'lucide-react';
+import { BatteryCharging, ArrowRight, Award } from 'lucide-react';
 import BatteryStorageShowcase from '../components/BatteryStorageShowcase';
 import { PRODUCTS_CATALOG } from '../data/siteData';
 

@@ -6,37 +6,41 @@ export function useLenisScroll() {
   const location = useLocation();
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll engine
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      lerp: 0.085,
+      duration: 1.2,
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.95,
       touchMultiplier: 1.5,
-      infinite: false
+      syncTouch: false,
+      infinite: false,
+      autoRaf: true,
     });
 
-    // RAF loop
-    let rafId;
-    function raf(time) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
-
-    // Make lenis globally accessible for anchor jump scrolling
     window.lenis = lenis;
 
+    const handleLenisScroll = (e) => {
+      const progressBar = document.querySelector('.global-scroll-progress-bar');
+      if (progressBar) {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const progress = Math.min(100, Math.max(0, (e.scroll / totalHeight) * 100));
+          progressBar.style.transform = `scaleX(${progress / 100})`;
+          progressBar.style.opacity = progress > 0.5 ? '1' : '0';
+        }
+      }
+    };
+
+    lenis.on('scroll', handleLenisScroll);
+
     return () => {
-      cancelAnimationFrame(rafId);
+      lenis.off('scroll', handleLenisScroll);
       lenis.destroy();
       delete window.lenis;
     };
   }, []);
 
-  // Scroll to top on route change
+  // Jump to top instantly on route change
   useEffect(() => {
     if (window.lenis) {
       window.lenis.scrollTo(0, { immediate: true });

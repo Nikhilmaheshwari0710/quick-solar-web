@@ -1,5 +1,5 @@
 import React from 'react';
-import { BatteryCharging, ShieldCheck, CheckCircle2, ArrowRight, Zap, Award } from 'lucide-react';
+import { BatteryCharging, ArrowRight } from 'lucide-react';
 import BatteryStorageShowcase from '../components/BatteryStorageShowcase';
 import TrustBadges from '../components/TrustBadges';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Users, HeartHandshake, ArrowRight, CheckCircle2, MapPin } from 'lucide-react';
+import { ShieldCheck, Award, Users, HeartHandshake, ArrowRight } from 'lucide-react';
 import WhyQuickSolar from '../components/WhyQuickSolar';
 import HowItWorks from '../components/HowItWorks';
 import TrustBadges from '../components/TrustBadges';

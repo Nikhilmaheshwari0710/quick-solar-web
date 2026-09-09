@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Award, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sun, Award, ArrowRight } from 'lucide-react';
 import { PRODUCTS_CATALOG } from '../data/siteData';
 
 export default function SolarPanelsPage({ onOpenQuote }) {

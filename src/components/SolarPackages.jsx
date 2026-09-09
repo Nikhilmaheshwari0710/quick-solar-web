@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   Check, Zap, Sparkles, ArrowRight, Battery, Building2, Home,
-  ShieldCheck, Award, Sun, DollarSign, TrendingUp, Cpu
+  ShieldCheck, Award, Sun, DollarSign
 } from 'lucide-react';
 
 export default function SolarPackages({ onOpenQuote }) {
@@ -10,66 +10,54 @@ export default function SolarPackages({ onOpenQuote }) {
   const residentialPackages = [
     {
       id: 'res-6.6',
+      kw: '6.6 kW',
       name: '6.6 kW Sweet Spot',
       tagline: 'Australia’s #1 Choice for 2–4 Bedroom Homes',
       dailyRate: '$3.00',
       weeklyRate: '$21',
       featured: false,
-      kw: '6.6 kW',
-      panels: '15 x 440W N-Type Tier 1',
-      inverter: '5kW Smart WiFi Inverter',
       generation: '26.4 kWh / day',
       savings: 'Save $1,650 / yr',
-      rebate: '$2,450 Federal STC Off',
-      warranty: '25-Yr Tier 1 Performance',
       specs: [
-        '15 x 440W Tier-1 N-Type Monocrystalline Panels',
-        '5 kW Smart Inverter with 24/7 Live App Tracking',
-        'Up to 26.4 kWh daily clean energy production',
-        '25-Year Performance & 10-Year Workmanship Warranty'
+        '15 x 440w Tier 1 Panels',
+        '1 x 5 kW Single Phase Smart WiFi Inverter',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     },
     {
       id: 'res-10.5',
+      kw: '10.5 kW',
       name: '10.5 kW High-Usage',
       tagline: 'Engineered for Ducted AC, Pools & EV Owners',
       dailyRate: '$4.80',
       weeklyRate: '$34',
       featured: true,
       ribbon: '#1 MOST POPULAR',
-      kw: '10.5 kW',
-      panels: '24 x 440W N-Type Tier 1',
-      inverter: '8.5kW Dual MPPT Inverter',
       generation: '42.0 kWh / day',
       savings: 'Save $2,340 / yr',
-      rebate: '$3,480 Federal STC Off',
-      warranty: '25-Yr Tier 1 Performance',
       specs: [
-        '24 x 440W Tier-1 Ultra-High Efficiency Panels',
-        '8.5 kW Dual MPPT Smart Inverter (Sungrow / Fronius)',
-        'Up to 42.0 kWh daily clean energy output',
-        'Battery Storage & EV Charger Ready'
+        '24 x 440w Tier 1 Panels',
+        '1 x 8 kW 1 or 3 Phase Smart WiFi Inverter',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     },
     {
       id: 'res-13.2',
+      kw: '13.2 kW',
       name: '13.2 kW Max Output',
       tagline: 'Maximum Household Generation & Near-Zero Bills',
       dailyRate: '$6.20',
       weeklyRate: '$44',
       featured: false,
-      kw: '13.2 kW',
-      panels: '30 x 440W N-Type Tier 1',
-      inverter: '10kW 3-Phase Inverter',
       generation: '52.8 kWh / day',
       savings: 'Save $3,100 / yr',
-      rebate: '$4,250 Federal STC Off',
-      warranty: '25-Yr Tier 1 Performance',
       specs: [
-        '30 x 440W Tier-1 High Yield Monocrystalline Array',
-        '10 kW Three-Phase Inverter with Smart Grid Export',
-        'Up to 52.8 kWh daily high-capacity generation',
-        'Maximum Federal STC Rebate Deduction'
+        '30 x 440w Tier 1 Panels',
+        '1 x 10 kW 3-Phase Smart WiFi Inverter',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     }
   ];
@@ -77,66 +65,54 @@ export default function SolarPackages({ onOpenQuote }) {
   const commercialPackages = [
     {
       id: 'com-20',
+      kw: '20 kW',
       name: '20 kW Commercial',
       tagline: 'For Small Offices, Workshops & Retailers',
       dailyRate: '$9.50',
       weeklyRate: '$66',
       featured: false,
-      kw: '20 kW',
-      panels: '46 x 440W Panels',
-      inverter: '20kW 3-Phase Commercial',
       generation: 'Up to 80 kWh / day',
       savings: 'Cuts daytime power ~70%',
-      rebate: 'Instant Tax Write-Off',
-      warranty: '25-Yr Commercial Warranty',
       specs: [
-        '46 x 440W Tier-1 Commercial Solar Panels',
-        '20 kW Three-Phase Commercial Inverter',
-        'Cuts daytime peak electricity tariffs by ~70%',
-        'Eligible for Instant Asset Tax Depreciation'
+        '46 x 440w Tier 1 Commercial Solar Panels',
+        '1 x 20 kW Three-Phase Commercial Inverter',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     },
     {
       id: 'com-50',
+      kw: '50 kW',
       name: '50 kW Enterprise',
       tagline: 'High ROI for Warehouses, Logistics & Factories',
       dailyRate: '$21.00',
       weeklyRate: '$147',
       featured: true,
-      ribbon: 'Top Commercial ROI',
-      kw: '50 kW',
-      panels: '114 x 440W Panels',
-      inverter: '50kW Multi-MPPT Inverter',
+      ribbon: 'TOP COMMERCIAL ROI',
       generation: 'Up to 200 kWh / day',
-      savings: '2.8 – 3.5 yr ROI Payback',
-      rebate: 'Full STC & Tax Deduction',
-      warranty: '25-Yr Commercial Warranty',
+      savings: '2.8 – 3.5 yr Payback',
       specs: [
-        '114 x 440W Tier-1 Monocrystalline Array',
-        '50 kW Multi-MPPT Commercial Inverter with Surge Protection',
-        'Fast estimated 2.8 – 3.5 year ROI payback period',
-        'Full DNSP Network Grid Connection & Approvals'
+        '114 x 440w Tier 1 Monocrystalline Panels',
+        '1 x 50 kW Multi-MPPT Commercial Inverter',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     },
     {
       id: 'com-100',
+      kw: '100 kW+',
       name: '100 kW+ Industrial',
       tagline: 'Custom Solar Plant for Large Manufacturing',
       dailyRate: 'Custom',
       weeklyRate: 'Tailored',
       featured: false,
-      kw: '100 kW+',
-      panels: '220+ High-Yield Panels',
-      inverter: 'Utility SCADA Integrated',
       generation: 'Up to 400+ kWh / day',
       savings: 'PPA & $0 Capital Options',
-      rebate: 'LGC Eligible Generation',
-      warranty: '25-Yr Performance Guarantee',
       specs: [
-        '220+ Panel Custom Engineered Commercial Array',
-        'High-Voltage Utility Grade Monitoring & SCADA',
-        'Power Purchase Agreement (PPA) & $0 Capital Options',
-        'Dedicated Quick Solar Commercial Project Manager'
+        '220+ x 440w Tier 1 High-Yield Panels',
+        'High-Voltage Utility Grade Multi-Inverter Array',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     }
   ];
@@ -144,66 +120,54 @@ export default function SolarPackages({ onOpenQuote }) {
   const batteryPackages = [
     {
       id: 'bat-tesla',
+      kw: '13.5 kWh',
       name: 'Tesla Powerwall 3',
       tagline: 'Whole-Home Instant Blackout Backup',
       dailyRate: '$6.50',
       weeklyRate: '$45',
       featured: false,
-      kw: '13.5 kWh',
-      panels: 'Integrated Hybrid',
-      inverter: 'Built-in 20kW Inverter',
-      generation: '24/7 Stored Energy',
-      savings: 'Storm Watch Mode',
-      rebate: 'VPP Ready Payouts',
-      warranty: '10-Yr Tesla Warranty',
+      generation: '24/7 Stored Power',
+      savings: 'Storm Watch Protection',
       specs: [
-        '13.5 kWh Usable Energy Storage Capacity',
-        'Integrated Solar Hybrid Inverter (up to 20kW input)',
-        'Seamless Instant Blackout Backup Power',
-        'Tesla App Live Monitoring & Storm Watch Mode'
+        '13.5 kWh Usable Lithium Energy Storage',
+        'Integrated Solar Hybrid Inverter (up to 20kW)',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     },
     {
       id: 'bat-sungrow',
+      kw: '9.6 - 19.2 kWh',
       name: 'Sungrow SBR Battery',
       tagline: 'Modular High-Voltage Safe LFP Storage',
       dailyRate: '$4.90',
       weeklyRate: '$34',
       featured: true,
-      ribbon: '#1 MOST POPULAR',
-      kw: '9.6–19.2 kWh',
-      panels: 'Modular Stackable',
-      inverter: 'Sungrow Hybrid Compatible',
-      generation: '100% Usable Energy',
-      savings: 'Time-of-Use Arbitrage',
-      rebate: 'Peak Demand Shift',
-      warranty: '10-Yr Sungrow Warranty',
+      ribbon: '#1 MOST POPULAR BATTERY',
+      generation: '100% Usable Capacity',
+      savings: 'Time-of-Use Shift',
       specs: [
-        '9.6 kWh to 19.2 kWh Modular Scalable Capacity',
-        'Ultra-Safe Cobalt-Free LFP Battery Chemistry',
-        'Emergency Power Supply (EPS) Blackout Circuit',
-        'iSolarCloud 24/7 Live Monitoring App'
+        '9.6 kWh to 19.2 kWh Modular High-Voltage Storage',
+        'Ultra-Safe Cobalt-Free LFP Chemistry',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     },
     {
-      id: 'bat-sigenergy',
-      name: 'Sigenergy 5-in-1',
-      tagline: 'AI Solar, Storage & Bi-Directional EV Charger',
+      id: 'bat-solar-plus',
+      kw: 'Complete',
+      name: 'Solar + Battery Package',
+      tagline: '24/7 Zero Bill Total Independence Package',
       dailyRate: '$5.80',
       weeklyRate: '$40',
       featured: false,
-      kw: '8–48 kWh',
-      panels: 'Stackable Blocks',
-      inverter: '5-in-1 Integrated',
-      generation: '0ms UPS Backup',
-      savings: 'Fast EV Charging',
-      rebate: 'AI Smart Tariffs',
-      warranty: '10-Yr Full Warranty',
+      generation: 'Solar + Storage',
+      savings: 'Maximum Independence',
       specs: [
-        '8 kWh to 48 kWh Stackable Modular Storage',
-        '0-millisecond True UPS Instant Blackout Transfer',
-        'Integrated Bi-directional DC Fast EV Charging',
-        'IP66 Australian Weatherproof Certified'
+        'Tier-1 Solar Panels + High-Capacity Battery',
+        'Smart Hybrid Inverter with Backup Circuit',
+        'Installation by SAA Accredited Designers & Installers',
+        'Grid Connection Assurance'
       ]
     }
   ];
@@ -221,7 +185,7 @@ export default function SolarPackages({ onOpenQuote }) {
         <div className="section-header" style={{ marginBottom: '2rem' }}>
           <div className="pill-badge pill-badge-emerald" style={{ marginBottom: '0.85rem' }}>
             <Sparkles size={14} />
-            <span>ALL-INCLUSIVE SOLAR & BATTERY PACKAGES</span>
+            <span>ALL-INCLUSIVE SOLAR &amp; BATTERY PACKAGES</span>
           </div>
           <h2 className="section-title">
             Transparent <span className="text-emerald">Turnkey Energy Packages</span>
@@ -259,7 +223,7 @@ export default function SolarPackages({ onOpenQuote }) {
           </div>
         </div>
 
-        {/* 3-Column Redesigned Cards Grid */}
+        {/* 3-Column Modern Package Cards Grid */}
         <div className="packages-cards-grid">
           {getActivePackages().map((pkg) => (
             <div
@@ -294,7 +258,7 @@ export default function SolarPackages({ onOpenQuote }) {
                 ) : (
                   <div className="pkg-finance-badge">
                     <Zap size={12} />
-                    <span>Custom PPA & Capital Finance</span>
+                    <span>Custom PPA &amp; Capital Finance</span>
                   </div>
                 )}
               </div>
@@ -311,12 +275,12 @@ export default function SolarPackages({ onOpenQuote }) {
                 </div>
               </div>
 
-              {/* Bullet Features */}
+              {/* Bullet Features with Exact Image Content */}
               <ul className="pkg-specs-list">
                 {pkg.specs.map((spec, idx) => (
                   <li key={idx} className="pkg-spec-row">
                     <div className="pkg-check-icon">
-                      <Check size={12} strokeWidth={3.2} />
+                      <Check size={13} strokeWidth={3.5} />
                     </div>
                     <span>{spec}</span>
                   </li>

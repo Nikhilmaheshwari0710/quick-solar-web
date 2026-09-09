@@ -1,49 +1,54 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export function useScrollAnimations() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
   useEffect(() => {
-    // 1. Scroll Progress Bar Calculation
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const currentProgress = (window.scrollY / totalHeight) * 100;
-        setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
-      }
+    // 1. Initial Pass: Reveal elements already in the initial viewport immediately
+    const checkInitialVisibility = () => {
+      const revealElements = document.querySelectorAll(
+        '.reveal-fade-up, .reveal-slide-left, .reveal-slide-right, .reveal-zoom-in, .reveal-stagger-group, [data-reveal]'
+      );
+
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.95) {
+          el.classList.add('is-revealed');
+        }
+      });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    checkInitialVisibility();
 
-    // 2. IntersectionObserver for Reveal Animations
+    // 2. High-Performance IntersectionObserver for Elements as they enter the screen
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.12
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.05
     };
 
     const revealElements = document.querySelectorAll(
       '.reveal-fade-up, .reveal-slide-left, .reveal-slide-right, .reveal-zoom-in, .reveal-stagger-group, [data-reveal]'
     );
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-revealed');
-          // Optional: unobserve once revealed for performance
-          // observer.unobserve(entry.target);
+          // Once revealed, disconnect observation of this element to maximize 60/120fps scroll smoothness
+          obs.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    revealElements.forEach((el) => observer.observe(el));
+    revealElements.forEach((el) => {
+      if (!el.classList.contains('is-revealed')) {
+        observer.observe(el);
+      }
+    });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
     };
   }, []);
 
-  return { scrollProgress };
+  return {};
 }

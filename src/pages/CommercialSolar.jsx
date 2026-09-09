@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, TrendingUp, ShieldCheck, ArrowRight, Zap, CheckCircle2, FileText } from 'lucide-react';
+import { Building2, TrendingUp, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 import { COMMERCIAL_PACKAGES } from '../data/siteData';
 
 export default function CommercialSolar({ onOpenQuote }) {
