@@ -109,31 +109,123 @@ export default function HeroSection({ onOpenQuote, onScrollToCalculator }) {
                 <ArrowRight size={18} />
               </button>
             </div>
+          </div>
+        </div>
 
-            {/* Left-Aligned Premium Location & Google Review Box */}
-            <div className="hero-bottom-proof-box hero-anim-fade-in-delayed">
-              {/* Row 1: Serving Locations */}
-              <div className="proof-box-row proof-box-location">
-                <div className="proof-icon-circle">
-                  <MapPin size={14} />
-                </div>
-                <span>Proudly serving Brisbane, Gold Coast, Sunshine Coast, Ipswich & QLD</span>
-              </div>
+        {/* Right-Side Bottom Simple Badges Bar (Matches Screenshot) */}
+        <div className="hero-right-bottom-badges-bar">
+          {/* 1. Inverter 10 Yrs Warranty */}
+          <div className="hero-badge-item" title="10 Years Inverter Warranty">
+            <svg width="66" height="66" viewBox="0 0 100 100" className="hero-badge-svg">
+              <defs>
+                <linearGradient id="goldSealInv" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#fef08a" />
+                  <stop offset="40%" stopColor="#eab308" />
+                  <stop offset="80%" stopColor="#ca8a04" />
+                  <stop offset="100%" stopColor="#854d0e" />
+                </linearGradient>
+                <path id="archTopI" d="M 22 41 A 32 32 0 0 1 78 41" fill="none" />
+                <path id="archBotI" d="M 18 67 A 34 34 0 0 0 82 67" fill="none" />
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="#090d16" stroke="url(#goldSealInv)" strokeWidth="3" />
+              <circle cx="50" cy="50" r="43" fill="none" stroke="url(#goldSealInv)" strokeWidth="1" strokeDasharray="2,2" />
+              <g fill="#eab308">
+                <polygon points="50,11 51.5,15 56,15 52.5,18 54,22 50,19.5 46,22 47.5,18 44,15 48.5,15" transform="scale(0.7) translate(21.5, 4)" />
+                <polygon points="50,11 51.5,15 56,15 52.5,18 54,22 50,19.5 46,22 47.5,18 44,15 48.5,15" transform="scale(0.55) translate(20, 10)" />
+                <polygon points="50,11 51.5,15 56,15 52.5,18 54,22 50,19.5 46,22 47.5,18 44,15 48.5,15" transform="scale(0.55) translate(61, 10)" />
+              </g>
+              <text fill="#fef08a" fontSize="7.5" fontWeight="800" letterSpacing="0.08em" textAnchor="middle">
+                <textPath href="#archTopI" startOffset="50%">INVERTER</textPath>
+              </text>
+              <text x="50" y="59" fill="url(#goldSealInv)" fontSize="26" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">10</text>
+              <text fill="#fef08a" fontSize="6.5" fontWeight="800" letterSpacing="0.05em" textAnchor="middle">
+                <textPath href="#archBotI" startOffset="50%">YEARS WARRANTY</textPath>
+              </text>
+            </svg>
+          </div>
 
-              {/* Row 2: Rating & Google Reviews */}
-              <div className="proof-box-row proof-box-rating">
-                <div className="proof-stars-wrap">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={13} fill="#fbbf24" color="#fbbf24" />
-                  ))}
-                </div>
-                <span className="proof-score">4.9/5</span>
-                <span className="proof-bullet">•</span>
-                <div className="proof-google-wrap">
-                  <span className="google-g-icon">G</span>
-                  <span>From 1,200+ Google Reviews</span>
-                </div>
-              </div>
+          {/* 2. Solar Panel 30 Yrs Warranty */}
+          <div className="hero-badge-item" title="30 Years Solar Panel Warranty">
+            <svg width="66" height="66" viewBox="0 0 100 100" className="hero-badge-svg">
+              <defs>
+                <linearGradient id="goldSealPan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#fef08a" />
+                  <stop offset="40%" stopColor="#eab308" />
+                  <stop offset="80%" stopColor="#ca8a04" />
+                  <stop offset="100%" stopColor="#854d0e" />
+                </linearGradient>
+                <path id="archTopP" d="M 18 39 A 34 34 0 0 1 82 39" fill="none" />
+                <path id="archBotP" d="M 18 67 A 34 34 0 0 0 82 67" fill="none" />
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="#090d16" stroke="url(#goldSealPan)" strokeWidth="3" />
+              <circle cx="50" cy="50" r="43" fill="none" stroke="url(#goldSealPan)" strokeWidth="1" strokeDasharray="2,2" />
+              <g fill="#eab308">
+                <polygon points="50,11 51.5,15 56,15 52.5,18 54,22 50,19.5 46,22 47.5,18 44,15 48.5,15" transform="scale(0.7) translate(21.5, 4)" />
+                <polygon points="50,11 51.5,15 56,15 52.5,18 54,22 50,19.5 46,22 47.5,18 44,15 48.5,15" transform="scale(0.55) translate(20, 10)" />
+                <polygon points="50,11 51.5,15 56,15 52.5,18 54,22 50,19.5 46,22 47.5,18 44,15 48.5,15" transform="scale(0.55) translate(61, 10)" />
+              </g>
+              <text fill="#fef08a" fontSize="6.8" fontWeight="800" letterSpacing="0.06em" textAnchor="middle">
+                <textPath href="#archTopP" startOffset="50%">SOLAR PANEL</textPath>
+              </text>
+              <text x="50" y="59" fill="url(#goldSealPan)" fontSize="26" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">30</text>
+              <text fill="#fef08a" fontSize="6.5" fontWeight="800" letterSpacing="0.05em" textAnchor="middle">
+                <textPath href="#archBotP" startOffset="50%">YEARS WARRANTY</textPath>
+              </text>
+            </svg>
+          </div>
+
+          {/* 3. Clean Energy Council Member */}
+          <div className="hero-badge-cec-box" title="Clean Energy Council Member">
+            <svg viewBox="0 0 100 100" width="30" height="30" className="cec-sun-svg">
+              <circle cx="50" cy="50" r="16" fill="none" stroke="#ea580c" strokeWidth="6" />
+              <g stroke="#ea580c" strokeWidth="4.5" strokeLinecap="round">
+                <line x1="50" y1="12" x2="50" y2="24" />
+                <line x1="50" y1="76" x2="50" y2="88" />
+                <line x1="12" y1="50" x2="24" y2="50" />
+                <line x1="76" y1="50" x2="88" y2="50" />
+                <line x1="23" y1="23" x2="32" y2="32" />
+                <line x1="68" y1="68" x2="77" y2="77" />
+                <line x1="23" y1="77" x2="32" y2="68" />
+                <line x1="68" y1="32" x2="77" y2="23" />
+              </g>
+            </svg>
+            <div className="cec-text-col">
+              <span className="cec-t-top">CLEAN ENERGY</span>
+              <span className="cec-t-mid">COUNCIL</span>
+              <span className="cec-t-tag">MEMBER</span>
+            </div>
+          </div>
+
+          {/* 4. NET Approved Seller Badge */}
+          <div className="hero-badge-item" title="New Energy Tech Approved Seller">
+            <svg width="66" height="66" viewBox="0 0 100 100" className="hero-badge-svg">
+              <defs>
+                <path id="archNetR" d="M 18 42 A 34 34 0 0 1 82 42" fill="none" />
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="#0284c7" strokeWidth="3" />
+              <circle cx="50" cy="50" r="41" fill="#0369a1" />
+              <text fill="#0284c7" fontSize="6.5" fontWeight="900" letterSpacing="0.04em" textAnchor="middle">
+                <textPath href="#archNetR" startOffset="50%">NEW ENERGY TECH</textPath>
+              </text>
+              <circle cx="50" cy="50" r="34" fill="#0284c7" />
+              <text x="50" y="46" fill="#ffffff" fontSize="9.5" fontWeight="800" textAnchor="middle" fontFamily="sans-serif">Approved</text>
+              <text x="50" y="60" fill="#bae6fd" fontSize="10.5" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">Seller</text>
+            </svg>
+          </div>
+
+          {/* 5. Google 4.9 Reviews Card */}
+          <div className="hero-badge-google-box" title="Google 4.9 Star Verified Customer Rating">
+            <span className="google-logo-text">
+              <span style={{ color: '#4285F4' }}>G</span>
+              <span style={{ color: '#EA4335' }}>o</span>
+              <span style={{ color: '#FBBC05' }}>o</span>
+              <span style={{ color: '#4285F4' }}>g</span>
+              <span style={{ color: '#34A853' }}>l</span>
+              <span style={{ color: '#EA4335' }}>e</span>
+            </span>
+            <div className="google-score-row">
+              <span className="google-val">4.9</span>
+              <span className="google-stars">★★★★★</span>
             </div>
           </div>
         </div>
