@@ -33,9 +33,7 @@ export default function HomePage({ onOpenQuote }) {
       />
 
       {/* 1. Hero: Clear Brisbane/Australia Solar Message + Primary & Secondary CTAs */}
-      <div className="reveal-fade-up is-revealed">
-        <HeroSection onOpenQuote={onOpenQuote} onScrollToCalculator={handleScrollToCalculator} />
-      </div>
+      <HeroSection onOpenQuote={onOpenQuote} onScrollToCalculator={handleScrollToCalculator} />
 
       {/* 2. Fast Rebate Quote Strip Form (Name, Email, Phone, Address) */}
       <div className="reveal-fade-up is-revealed">

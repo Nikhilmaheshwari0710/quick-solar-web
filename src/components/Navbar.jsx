@@ -14,10 +14,21 @@ export default function Navbar({ onOpenQuote }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      const scrollY = window.scrollY || document.documentElement.scrollTop || (window.lenis ? window.lenis.scroll : 0) || 0;
+      setScrolled(scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (window.lenis) {
+      window.lenis.on('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (window.lenis) {
+        window.lenis.off('scroll', handleScroll);
+      }
+    };
   }, []);
 
   // Close mobile menu on route change

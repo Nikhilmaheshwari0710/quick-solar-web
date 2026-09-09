@@ -72,7 +72,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   height: auto;
 }
 
@@ -363,10 +363,8 @@ img {
    SCROLL PERFORMANCE
    ========================================================= */
 
-/* Only promote animated/fixed elements to GPU layers — NOT all sections */
-.hero-bg-video,
-.hero-ambient-orb,
-.hero-video-overlay {
+/* Only promote animated orbs to GPU layers */
+.hero-ambient-orb {
   will-change: transform;
   transform: translateZ(0);
 }
