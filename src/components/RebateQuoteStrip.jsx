@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { User, Phone, Mail, MapPin, ArrowRight, Check, Lock, CheckCircle2 } from 'lucide-react';
+import confetti from 'canvas-confetti';
 
 export default function RebateQuoteStrip({ onOpenQuote }) {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
+    email: '',
     address: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -29,126 +30,172 @@ export default function RebateQuoteStrip({ onOpenQuote }) {
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
+      try {
+        confetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { y: 0.6 }
+        });
+      } catch {
+        // ignore
+      }
       setTimeout(() => {
         setSubmitted(false);
-        setFormData({ name: '', email: '', phone: '', address: '' });
-      }, 5000);
+        setFormData({ name: '', phone: '', email: '', address: '' });
+      }, 6000);
     }, 600);
   };
 
   return (
-    <section className="rebate-quote-section" id="rebate-quote">
-      <div className="container-wide">
-        <div className="rebate-quote-card">
-          <div className="rebate-quote-header">
-            <h2 className="rebate-quote-title">
-              Get Your Solar &amp; Battery Rebate Quote Today
-            </h2>
-            <p className="rebate-quote-subtitle">
-              Fast, free &amp; no-obligation estimate with 2026 Federal &amp; State Government rebate discounts applied
-            </p>
-          </div>
+    <section className="rebate-quote-exact-section" id="rebate-quote">
+      <div className="rebate-quote-exact-wrapper">
+        <div
+          className="rebate-quote-exact-canvas"
+          style={{ backgroundImage: `url("/images/rebate_quote_banner_bg.jpg")` }}
+        >
+          {/* Left Column: Title, Description & 3 Value Badges */}
+          <div className="rebate-exact-left-col">
+            {/* Top Green Kicker with Cyan Accent Line */}
+            <div className="rebate-exact-kicker">
+              <span>FREE SOLAR &amp; BATTERY QUOTE</span>
+              <span className="rebate-exact-kicker-line" />
+            </div>
 
-          {submitted ? (
-            <div className="rebate-quote-success">
-              <CheckCircle2 size={32} className="success-icon" />
-              <div>
-                <h3 className="success-title">Thank you, {formData.name || 'valued customer'}!</h3>
-                <p className="success-desc">
-                  Your rebate quote request has been received. Our Australian solar advisor will contact you shortly with your customized proposal.
-                </p>
+            {/* Main Headline */}
+            <h2 className="rebate-exact-title">
+              <span>See How Much</span>
+              <span>You Could Save</span>
+            </h2>
+
+            {/* Description */}
+            <p className="rebate-exact-desc">
+              Tell us a few details and our solar specialists will prepare a tailored rebate-ready quote for your property.
+            </p>
+
+            {/* 3 Green Checkmark Badges Row */}
+            <div className="rebate-exact-features-row">
+              <div className="rebate-exact-feature-item">
+                <div className="rebate-exact-check-circle">
+                  <Check size={12} strokeWidth={3.5} />
+                </div>
+                <span>No-obligation quote</span>
+              </div>
+
+              <div className="rebate-exact-feature-item">
+                <div className="rebate-exact-check-circle">
+                  <Check size={12} strokeWidth={3.5} />
+                </div>
+                <span>Local solar specialists</span>
+              </div>
+
+              <div className="rebate-exact-feature-item">
+                <div className="rebate-exact-check-circle">
+                  <Check size={12} strokeWidth={3.5} />
+                </div>
+                <span>Fast response</span>
               </div>
             </div>
-          ) : (
-            <form className="rebate-quote-form" onSubmit={handleSubmit}>
-              <div className="rebate-form-grid">
-                <div className="rebate-input-wrap">
-                  <label htmlFor="rebate-name" className="sr-only">Name</label>
-                  <input
-                    type="text"
-                    id="rebate-name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Name"
-                    required
-                    className="rebate-input"
-                  />
+          </div>
+
+          {/* Right Column: Floating White Quote Form Card */}
+          <div className="rebate-exact-right-col">
+            <div className="rebate-exact-form-card">
+              <h3 className="rebate-exact-form-title">
+                GET YOUR SOLAR &amp; BATTERY REBATE QUOTE TODAY
+              </h3>
+
+              {submitted ? (
+                <div className="rebate-exact-success-box">
+                  <CheckCircle2 size={36} className="text-emerald-600 mb-2" />
+                  <h4 className="font-bold text-slate-800 text-lg">Quote Request Received!</h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    Thank you, {formData.name || 'valued customer'}. Our specialist is calculating your solar &amp; battery rebate savings and will be in touch shortly.
+                  </p>
                 </div>
+              ) : (
+                <form className="rebate-exact-form" onSubmit={handleSubmit}>
+                  <div className="rebate-exact-input-grid">
+                    {/* 1. Name */}
+                    <div className="rebate-exact-input-wrap">
+                      <User size={17} className="rebate-exact-input-icon" />
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Name"
+                        required
+                        className="rebate-exact-input"
+                      />
+                    </div>
 
-                <div className="rebate-input-wrap">
-                  <label htmlFor="rebate-email" className="sr-only">Email</label>
-                  <input
-                    type="email"
-                    id="rebate-email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    required
-                    className="rebate-input"
-                  />
-                </div>
+                    {/* 2. Phone */}
+                    <div className="rebate-exact-input-wrap">
+                      <Phone size={17} className="rebate-exact-input-icon" />
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="Phone"
+                        required
+                        className="rebate-exact-input"
+                      />
+                    </div>
 
-                <div className="rebate-input-wrap">
-                  <label htmlFor="rebate-phone" className="sr-only">Phone</label>
-                  <input
-                    type="tel"
-                    id="rebate-phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Phone"
-                    required
-                    className="rebate-input"
-                  />
-                </div>
+                    {/* 3. Email */}
+                    <div className="rebate-exact-input-wrap">
+                      <Mail size={17} className="rebate-exact-input-icon" />
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Email"
+                        required
+                        className="rebate-exact-input"
+                      />
+                    </div>
 
-                <div className="rebate-input-wrap">
-                  <label htmlFor="rebate-address" className="sr-only">Address</label>
-                  <input
-                    type="text"
-                    id="rebate-address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    placeholder="Address"
-                    className="rebate-input"
-                  />
-                </div>
-              </div>
+                    {/* 4. Address */}
+                    <div className="rebate-exact-input-wrap">
+                      <MapPin size={17} className="rebate-exact-input-icon" />
+                      <input
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        placeholder="Address"
+                        className="rebate-exact-input"
+                      />
+                    </div>
+                  </div>
 
-              <div className="rebate-submit-wrap">
-                <button
-                  type="submit"
-                  className="btn-rebate-submit"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <span>Submitting...</span>
-                  ) : (
-                    <>
-                      <span>Submit</span>
-                      <Send size={16} />
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
-          )}
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="btn-rebate-exact-submit"
+                    disabled={loading}
+                    id="rebate-exact-submit-btn"
+                  >
+                    {loading ? (
+                      <span>Calculating Rebate...</span>
+                    ) : (
+                      <>
+                        <span>GET MY FREE QUOTE</span>
+                        <ArrowRight size={19} className="btn-arrow-icon" />
+                      </>
+                    )}
+                  </button>
 
-          <div className="rebate-quote-footer-proof">
-            <span className="proof-item">
-              <ShieldCheck size={14} className="text-emerald" /> 100% Free &amp; Zero Obligation
-            </span>
-            <span className="proof-dot">•</span>
-            <span className="proof-item">
-              <Zap size={14} className="text-gold" /> Instant Federal Rebate Breakdown
-            </span>
-            <span className="proof-dot">•</span>
-            <span className="proof-item">
-              <Sparkles size={14} className="text-emerald" /> 24-Hour Fast Turnaround
-            </span>
+                  {/* Security Note */}
+                  <div className="rebate-exact-security-note">
+                    <Lock size={13} className="text-slate-500" />
+                    <span>Your details are secure and never shared.</span>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>

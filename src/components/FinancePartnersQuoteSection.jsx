@@ -1,17 +1,5 @@
 import React, { useState } from 'react';
-import {
-  CheckCircle2,
-  Check,
-  Sparkles,
-  ArrowRight,
-  ShieldCheck,
-  Clock,
-  User,
-  Mail,
-  Phone,
-  MapPin,
-  MessageSquare
-} from 'lucide-react';
+import { Lock, ArrowRight, Check } from 'lucide-react';
 
 export default function FinancePartnersQuoteSection({ onOpenQuote }) {
   const [formData, setFormData] = useState({
@@ -28,224 +16,266 @@ export default function FinancePartnersQuoteSection({ onOpenQuote }) {
     setSubmitted(true);
     if (onOpenQuote) {
       onOpenQuote({
-        package: 'Brighte / Plenti Finance Plan Quote',
+        package: 'Flexible Solar Finance Quote',
         ...formData
       });
     }
   };
 
   return (
-    <section className="finance-unique-section" id="finance-partners">
-      <div className="container-wide">
+    <section className="finance-options-exact-section" id="finance-partners">
+      {/* Ambient Section Background Curves */}
+      <div className="section-ambient-curve ambient-left" aria-hidden="true">
+        <svg viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M-100 0 C150 150 250 450 50 800 L-100 800 Z" fill="#e0f2fe" opacity="0.6" />
+          <path d="M-100 100 C100 250 180 500 0 800 L-100 800 Z" fill="#bae6fd" opacity="0.35" />
+        </svg>
+      </div>
+      <div className="section-ambient-curve ambient-right" aria-hidden="true">
+        <svg viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M600 0 C350 200 280 500 450 800 L600 800 Z" fill="#e0f2fe" opacity="0.6" />
+          <path d="M600 150 C400 300 350 550 500 800 L600 800 Z" fill="#bae6fd" opacity="0.35" />
+        </svg>
+      </div>
+
+      <div className="finance-options-outer-container">
         
         {/* Section Header */}
-        <div className="section-header" style={{ marginBottom: '2.5rem' }}>
-          <div className="section-eyebrow" style={{ marginBottom: '0.65rem', color: '#10b981', fontWeight: 800, letterSpacing: '0.08em', fontSize: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
-            <Sparkles size={15} />
-            <span>FLEXIBLE SOLAR FINANCE OPTIONS</span>
+        <div className="finance-options-header">
+          <div className="finance-options-kicker-row">
+            <div className="kicker-deco-line" />
+            <span className="finance-options-kicker-text">SOLAR FINANCE OPTIONS</span>
+            <div className="kicker-deco-line" />
           </div>
-          <h2 className="section-title">
-            $0 Upfront <span className="text-emerald">Payment Plans</span>
+          <h2 className="finance-options-title">
+            Flexible Ways to Start Saving With Solar
           </h2>
-          <p className="section-subtitle">
-            Partnered with Australia’s top clean energy finance providers for fast pre-approval and tailored interest-free plans.
+          <p className="finance-options-subtitle">
+            Explore payment options from trusted finance providers and request a tailored solar quote.
           </p>
         </div>
 
-        {/* 2-Column Luxury Split: Left Partner Cards + Right Elevated Quote Card */}
-        <div className="finance-unique-grid">
-          
-          {/* Left Column: Duo Partner Cards */}
-          <div className="finance-partners-column">
+        {/* 1 Big White Main Card Frame with Left & Right Breathing Room */}
+        <div className="finance-options-main-box">
+          <div className="finance-options-3col-grid">
             
-            {/* 1. BRIGHTE CARD */}
-            <div className="unique-partner-card card-brighte-glow">
-              <div className="partner-card-header">
-                <div className="partner-brand-pill pill-brighte">
-                  <span className="sun-symbol">☀️</span>
-                  <span className="brand-name">Brighte</span>
-                </div>
-                <div className="partner-badge-tag">
-                  <Clock size={13} />
-                  <span>1–3 Days Approval</span>
+            {/* 1. BRIGHTE CARD (Left - Pale Mint Green with Leaf Artwork) */}
+            <div className="finance-provider-card card-brighte-style">
+              {/* Brand Header */}
+              <div className="provider-logo-header">
+                <div className="brighte-logo-lockup">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="22" r="3.5" fill="#16a34a" />
+                    <circle cx="15" cy="14" r="3.5" fill="#16a34a" />
+                    <circle cx="23" cy="8" r="3.5" fill="#16a34a" />
+                    <circle cx="13" cy="24" r="3" fill="#16a34a" />
+                  </svg>
+                  <span className="brighte-brand-name">Brighte</span>
                 </div>
               </div>
 
-              <h3 className="partner-headline">
-                Payment plans across our range of Solar products.
+              {/* Title & Description */}
+              <h3 className="provider-card-title">
+                Payment Plans Across Our Solar Range
               </h3>
-
-              <p className="partner-body-copy">
-                You can get your solar system installed now and pay it off over time. A system that literally pays for itself in savings, it’s never been easier to start reducing your energy costs.
+              <p className="provider-card-desc">
+                Install your solar system now and pay it off over time, subject to approval and eligibility.
               </p>
 
-              <ul className="unique-checklist">
-                <li className="checklist-item">
-                  <div className="check-emerald-dot">
-                    <Check size={13} strokeWidth={3.5} />
+              {/* Feature Checklist */}
+              <ul className="provider-checklist">
+                <li className="provider-check-item">
+                  <div className="provider-check-badge badge-green">
+                    <Check size={12} strokeWidth={3.5} />
                   </div>
-                  <span>Australia's leader in solar finance</span>
+                  <span>Australian solar finance provider</span>
                 </li>
-                <li className="checklist-item">
-                  <div className="check-emerald-dot">
-                    <Check size={13} strokeWidth={3.5} />
+                <li className="provider-check-item">
+                  <div className="provider-check-badge badge-green">
+                    <Check size={12} strokeWidth={3.5} />
                   </div>
-                  <span>Approval within 1-3 business days</span>
+                  <span>Fast application process</span>
                 </li>
               </ul>
+
+              {/* Bottom Decorative Wave & Leaves Background */}
+              <div className="card-bottom-artwork brighte-artwork" aria-hidden="true">
+                <svg viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="artwork-svg">
+                  {/* Soft bottom landscape wave */}
+                  <path d="M0 75 C90 55 190 95 360 50 V120 H0 Z" fill="#d1fae5" opacity="0.8" />
+                  <path d="M0 90 C110 75 220 105 360 70 V120 H0 Z" fill="#a7f3d0" opacity="0.6" />
+                  {/* Two distinct green leaves on the right */}
+                  <g transform="translate(255, 20)">
+                    {/* Left leaf */}
+                    <path d="M38 72 C30 44 8 26 -8 34 C-5 56 16 70 38 72 Z" fill="#86efac" />
+                    {/* Right leaf */}
+                    <path d="M38 72 C46 46 68 30 84 37 C80 59 60 70 38 72 Z" fill="#4ade80" />
+                  </g>
+                </svg>
+              </div>
             </div>
 
-            {/* 2. PLENTI CARD */}
-            <div className="unique-partner-card card-plenti-glow">
-              <div className="partner-card-header">
-                <div className="partner-brand-pill pill-plenti">
-                  <span className="brand-name">Plenti</span>
-                </div>
-                <div className="partner-badge-tag tag-blue">
-                  <Clock size={13} />
-                  <span>60 Sec Response</span>
+            {/* 2. PLENTI CARD (Middle - Pale Sky Blue with Ocean Wave Artwork) */}
+            <div className="finance-provider-card card-plenti-style">
+              {/* Brand Header */}
+              <div className="provider-logo-header">
+                <div className="plenti-logo-lockup">
+                  <span className="plenti-brand-name">Plenti</span>
                 </div>
               </div>
 
-              <h3 className="partner-headline">
-                Flexible, longer term Interest Free payment plans to suit your Solar needs.
+              {/* Title & Description */}
+              <h3 className="provider-card-title">
+                Flexible, Longer-Term Payment Plans
               </h3>
+              <p className="provider-card-desc">
+                Explore interest-free payment options designed to suit your solar needs, subject to eligibility and provider terms.
+              </p>
 
-              <ul className="unique-checklist">
-                <li className="checklist-item">
-                  <div className="check-blue-dot">
-                    <Check size={13} strokeWidth={3.5} />
+              {/* Feature Checklist */}
+              <ul className="provider-checklist">
+                <li className="provider-check-item">
+                  <div className="provider-check-badge badge-blue">
+                    <Check size={12} strokeWidth={3.5} />
                   </div>
-                  <span>Check your eligibility and apply in 10 minutes. And it only takes 60 seconds for a response.</span>
+                  <span>Quick online eligibility check</span>
                 </li>
-                <li className="checklist-item">
-                  <div className="check-blue-dot">
-                    <Check size={13} strokeWidth={3.5} />
+                <li className="provider-check-item">
+                  <div className="provider-check-badge badge-blue">
+                    <Check size={12} strokeWidth={3.5} />
                   </div>
-                  <span>Enjoy Funds as in as little as 24hrs from approval.</span>
+                  <span>Response available after application</span>
                 </li>
               </ul>
+
+              {/* Bottom Decorative Layered Ocean Waves */}
+              <div className="card-bottom-artwork plenti-artwork" aria-hidden="true">
+                <svg viewBox="0 0 360 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="artwork-svg">
+                  {/* Back Soft Wave */}
+                  <path d="M0 60 C80 35 170 80 260 45 C305 30 335 38 360 45 V120 H0 Z" fill="#bae6fd" opacity="0.7" />
+                  {/* Middle Wave */}
+                  <path d="M0 78 C100 55 200 92 290 62 C325 50 345 55 360 62 V120 H0 Z" fill="#7dd3fc" opacity="0.8" />
+                  {/* Front Base Wave */}
+                  <path d="M0 96 C110 80 230 108 360 85 V120 H0 Z" fill="#38bdf8" opacity="0.35" />
+                </svg>
+              </div>
             </div>
 
-          </div>
-
-          {/* Right Column: Elevated Glass Lead Form */}
-          <div className="finance-form-column">
-            <div className="elevated-quote-card">
-              <div className="form-card-header">
-                <div className="form-pill-tag">
-                  <ShieldCheck size={14} />
-                  <span>PRE-APPROVAL QUOTE</span>
-                </div>
-                <h3 className="form-card-title">Apply for $0 Deposit Solar</h3>
-                <p className="form-card-subtitle">Receive customized payment plans within minutes.</p>
+            {/* 3. REQUEST YOUR FREE QUOTE FORM (Right - Clean Form Card) */}
+            <div className="finance-quote-form-container">
+              <div className="quote-form-header">
+                <h3 className="quote-form-title">REQUEST YOUR FREE QUOTE</h3>
+                <p className="quote-form-subtitle">Tell us a few details and our team will get in touch.</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="unique-lead-form">
-                {submitted ? (
-                  <div className="form-success-banner">
-                    <CheckCircle2 size={48} className="text-emerald" />
-                    <h4>Application Received!</h4>
-                    <p>Our finance specialists will contact you shortly with your Brighte &amp; Plenti options.</p>
+              {submitted ? (
+                <div className="quote-form-success">
+                  <div className="provider-check-badge badge-green" style={{ width: '40px', height: '40px', margin: '0 auto 1rem' }}>
+                    <Check size={22} strokeWidth={3} />
                   </div>
-                ) : (
-                  <>
-                    {/* Row 1: Full Name & Email */}
-                    <div className="form-grid-2col">
-                      <div className="input-field-group">
-                        <label htmlFor="uq-fullName">Full Name</label>
-                        <div className="input-icon-wrap">
-                          <User size={15} className="field-icon" />
-                          <input
-                            id="uq-fullName"
-                            type="text"
-                            required
-                            placeholder="Full name"
-                            value={formData.fullName}
-                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          />
-                        </div>
-                      </div>
+                  <h4 style={{ color: '#0b2545', margin: '0 0 0.5rem', fontWeight: 800 }}>Quote Request Submitted!</h4>
+                  <p style={{ color: '#64748b', fontSize: '0.9rem', margin: 0 }}>
+                    Thank you, {formData.fullName || 'there'}! Our solar finance specialists will contact you shortly.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="finance-quote-form-fields">
+                  {/* Full Name */}
+                  <div className="finance-field-group">
+                    <label htmlFor="fin-name" className="finance-label">Full Name</label>
+                    <input
+                      id="fin-name"
+                      type="text"
+                      className="finance-input"
+                      placeholder="Enter full name"
+                      required
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    />
+                  </div>
 
-                      <div className="input-field-group">
-                        <label htmlFor="uq-email">Email Address</label>
-                        <div className="input-icon-wrap">
-                          <Mail size={15} className="field-icon" />
-                          <input
-                            id="uq-email"
-                            type="email"
-                            required
-                            placeholder="Email address"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          />
-                        </div>
-                      </div>
-                    </div>
+                  {/* Email Address */}
+                  <div className="finance-field-group">
+                    <label htmlFor="fin-email" className="finance-label">Email Address</label>
+                    <input
+                      id="fin-email"
+                      type="email"
+                      className="finance-input"
+                      placeholder="Enter email address"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
 
-                    {/* Row 2: Contact Number & Address */}
-                    <div className="form-grid-2col">
-                      <div className="input-field-group">
-                        <label htmlFor="uq-phone">Contact Number</label>
-                        <div className="input-icon-wrap">
-                          <Phone size={15} className="field-icon" />
-                          <input
-                            id="uq-phone"
-                            type="tel"
-                            required
-                            placeholder="Mobile number"
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          />
-                        </div>
-                      </div>
+                  {/* Contact Number */}
+                  <div className="finance-field-group">
+                    <label htmlFor="fin-phone" className="finance-label">Contact Number</label>
+                    <input
+                      id="fin-phone"
+                      type="tel"
+                      className="finance-input"
+                      placeholder="Enter mobile number"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    />
+                  </div>
 
-                      <div className="input-field-group">
-                        <label htmlFor="uq-address">Address / Suburb</label>
-                        <div className="input-icon-wrap">
-                          <MapPin size={15} className="field-icon" />
-                          <input
-                            id="uq-address"
-                            type="text"
-                            required
-                            placeholder="Address / Suburb"
-                            value={formData.address}
-                            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                          />
-                        </div>
-                      </div>
-                    </div>
+                  {/* Address */}
+                  <div className="finance-field-group">
+                    <label htmlFor="fin-address" className="finance-label">Address</label>
+                    <input
+                      id="fin-address"
+                      type="text"
+                      className="finance-input"
+                      placeholder="Enter address"
+                      required
+                      value={formData.address}
+                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    />
+                  </div>
 
-                    {/* Row 3: Message */}
-                    <div className="input-field-group">
-                      <label htmlFor="uq-message">Message (Optional)</label>
-                      <div className="input-icon-wrap textarea-wrap">
-                        <MessageSquare size={15} className="field-icon-textarea" />
-                        <textarea
-                          id="uq-message"
-                          rows={2}
-                          placeholder="Your solar requirements..."
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        />
-                      </div>
-                    </div>
+                  {/* Message */}
+                  <div className="finance-field-group">
+                    <label htmlFor="fin-message" className="finance-label">Message</label>
+                    <textarea
+                      id="fin-message"
+                      className="finance-textarea"
+                      placeholder="Message"
+                      rows={2}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    />
+                  </div>
 
-                    {/* Submit Button */}
-                    <button type="submit" className="btn-unique-quote-submit">
-                      <span>REQUEST A QUOTE</span>
-                      <ArrowRight size={17} />
-                    </button>
+                  {/* Submit Button */}
+                  <button type="submit" className="finance-submit-btn">
+                    <span>REQUEST A QUOTE</span>
+                    <ArrowRight size={16} />
+                  </button>
 
-                    <div className="form-security-footer">
-                      <span>🔒 256-Bit SSL Encrypted &bull; No Obligation</span>
-                    </div>
-                  </>
-                )}
-              </form>
+                  {/* Security Footnote */}
+                  <div className="finance-form-security-note">
+                    <Lock size={12} className="security-lock-icon" />
+                    <span>
+                      Your details are secure. By submitting, you agree to our{' '}
+                      <a href="/legal" className="security-link">Terms &amp; Conditions</a> and{' '}
+                      <a href="/legal" className="security-link">Privacy Policy</a>.
+                    </span>
+                  </div>
+                </form>
+              )}
             </div>
+
           </div>
 
+          {/* Centered Bottom Disclaimer */}
+          <div className="finance-options-disclaimer-row">
+            <p className="finance-options-disclaimer-text">
+              Finance approval, fees, eligibility and terms apply. Product availability may vary.
+            </p>
+          </div>
         </div>
 
       </div>

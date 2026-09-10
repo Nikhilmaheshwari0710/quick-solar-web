@@ -11,6 +11,7 @@ import BrandsWeInstall from '../components/BrandsWeInstall';
 import QuickSolarDifferenceSection from '../components/QuickSolarDifferenceSection';
 import Testimonials from '../components/Testimonials';
 import OurProcessQuickContactSection from '../components/OurProcessQuickContactSection';
+import FloatingNavRail from '../components/FloatingNavRail';
 import { useScrollAnimations } from '../utils/useScrollAnimations';
 
 export default function HomePage({ onOpenQuote }) {
@@ -89,6 +90,9 @@ export default function HomePage({ onOpenQuote }) {
       <div className="reveal-zoom-in">
         <OurProcessQuickContactSection onOpenQuote={onOpenQuote} />
       </div>
+
+      {/* Floating Call/Quote Action Buttons */}
+      <FloatingNavRail onOpenQuote={onOpenQuote} />
     </div>
   );
 }
